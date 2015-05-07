@@ -1,0 +1,20 @@
+{
+  "id": 1,
+  "key": "imemdazaus",
+  "name": "iFlux thermometer",
+  "public": false,
+  "organizationId": 1,
+  "configuration": {
+    "schema": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "properties": {
+        "captorId": {
+          "type": "string"
+        }
+      }
+    },
+    "url": "http://some.cool.weather.service/configuration",
+    "token": "<JSON Web Token>"
+  }
+}

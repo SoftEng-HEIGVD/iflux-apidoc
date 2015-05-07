@@ -1,0 +1,16 @@
+{
+  "name": [
+    "The name must be at least 2 characters long",
+    "Name is already taken."
+  ],
+  "configurations": {
+    "0": {
+      "eventSourceId": [
+        "The event source id is required when no event type id provided."
+      ],
+      "eventTypeId": [
+        "The event type id is required when no event source id provided."
+      ]
+    }
+  }
+}

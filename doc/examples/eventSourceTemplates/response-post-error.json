@@ -1,0 +1,11 @@
+{
+  "name": [
+    "The name must be at least 2 characters long",
+    "Name is already taken."
+  ],
+  "configuration": {
+    "url": [
+      "Configuration URL is mandatory when configuration schema is present."
+    ]
+  }
+}

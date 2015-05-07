@@ -1,0 +1,22 @@
+{
+  "name": "iFlux Slack bot",
+  "public": true,
+  "organizationId": 1,
+  "configuration": {
+    "schema": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "properties": {
+        "botId": {
+          "type": "string"
+        }
+      }
+    },
+    "url": "http://slackgateway.bot.instance/configuration",
+    "token": "<JSON Web Token>"
+  },
+  "target": {
+    "url": "http://slackgateway.bot.instance/actions",
+    "token": "<JSON Web Token>"
+  }
+}

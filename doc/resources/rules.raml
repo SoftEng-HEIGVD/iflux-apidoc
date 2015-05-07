@@ -1,0 +1,54 @@
+is: [ auth ]
+type:
+  collection:
+    humanName: rule
+    schemaBaseName: rule
+    exampleGetResponse: !include ../examples/rules/response-array-get.json
+    examplePostRequest: !include ../examples/rules/request-post.json
+    examplePostError: !include ../examples/rules/response-post-error.json
+get:
+  securedBy: [ jwt: { type: 'owner' } ]
+  description: |
+    You cannot retrieve all the rules accross all the organizations. You **MUST** provide
+    the `organizationId` to get all the rules for it.
+  queryParameters:
+    organizationId:
+      description: |
+        Filter the rules by organization.
+
+        The user **MUST** be a member of the organization.
+      type: integer
+      required: true
+      example: |
+        `organizationId=1`
+  responses:
+    422:
+      description: If the `organizationId` is not provided.
+    403:
+      description: If the user is not a member of the organization.
+post:
+  securedBy: [ jwt: { type: 'owner' } ]
+  responses:
+    403:
+      description: If the user is not a member of the organization where the new rule will be defined.
+
+/{ruleId}:
+  is: [ auth ]
+  type:
+    member:
+      humanName: rules
+      schemaBaseName: rule
+      identifierName: ruleId
+      exampleGetResponse: !include ../examples/rules/response-get.json
+      examplePatchRequest: !include ../examples/rules/request-patch.json
+      examplePatchError: !include ../examples/rules/response-patch-error.json
+  get:
+    securedBy: [ jwt: { type: 'owner' } ]
+    responses:
+      403:
+        description: If the user is not a member of the organization that owns the rule.
+  patch:
+    securedBy: [ jwt: { type: 'owner' } ]
+    responses:
+      403:
+        description: If the user is not a member of the organization that owns the rule.

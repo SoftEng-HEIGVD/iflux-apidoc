@@ -1,0 +1,289 @@
+#%RAML 0.8
+---
+title: iFLUX API
+baseUri: https://api.iflux.io/{version}/
+version: v1
+protocols: [HTTPS]
+mediaType: application/json
+
+securitySchemes:
+  - jwt:
+      description: JSON Web Token authentication.
+      type: "x-{jwt}"
+  - test:
+      description: Marker for tested resources.
+      type: "x-{test}"
+#      describedBy:
+#        headers:
+#          Authorization:
+#            description: JSON Web Token for authentication.
+#            type: string
+#            required: true
+#            example: 'Authorization: Bearer {Repalce by a real JSON Web Token}'
+#
+#        responses:
+#          401:
+#            description: Authorization required. Your credentials seems to be wrong or missing.
+#          403:
+#            description: You don't have the permission to access to this resource.
+#
+#      settings:
+#        roles: <<roles>>
+
+resourceTypes:
+  - collection: !include doc/resourceTypes/collection.raml
+  - collection-optional: !include doc/resourceTypes/collectionOptional.raml
+  - member: !include doc/resourceTypes/member.raml
+  - member-optional: !include doc/resourceTypes/memberOptional.raml
+
+schemas:
+  - auth-signin-post-req: !include doc/schemas/auth/request-signin-post.json
+  - auth-signin-post-res: !include doc/schemas/auth/response-signin-post.json
+  - auth-register-post-req: !include doc/schemas/auth/request-register-post.json
+  - errors: !include doc/schemas/errors.json
+  - actionTargetInstance-get: !include doc/schemas/actionTargetInstances/response-get.json
+  - actionTargetInstance-patch: !include doc/schemas/actionTargetInstances/request-patch.json
+  - actionTargetInstance-post: !include doc/schemas/actionTargetInstances/request-post.json
+  - actionTargetInstance-getAll: !include doc/schemas/actionTargetInstances/response-array-get.json
+  - actionTargetTemplate-get: !include doc/schemas/actionTargetTemplates/response-get.json
+  - actionTargetTemplate-patch: !include doc/schemas/actionTargetTemplates/request-patch.json
+  - actionTargetTemplate-post: !include doc/schemas/actionTargetTemplates/request-post.json
+  - actionTargetTemplate-getAll: !include doc/schemas/actionTargetTemplates/response-array-get.json
+  - actionType-get: !include doc/schemas/actionTypes/response-get.json
+  - actionType-patch: !include doc/schemas/actionTypes/request-patch.json
+  - actionType-post: !include doc/schemas/actionTypes/request-post.json
+  - actionType-getAll: !include doc/schemas/actionTypes/response-array-get.json
+  - eventSourceInstance-get: !include doc/schemas/eventSourceInstances/response-get.json
+  - eventSourceInstance-patch: !include doc/schemas/eventSourceInstances/request-patch.json
+  - eventSourceInstance-post: !include doc/schemas/eventSourceInstances/request-post.json
+  - eventSourceInstance-getAll: !include doc/schemas/eventSourceInstances/response-array-get.json
+  - eventSourceTemplate-get: !include doc/schemas/eventSourceTemplates/response-get.json
+  - eventSourceTemplate-patch: !include doc/schemas/eventSourceTemplates/request-patch.json
+  - eventSourceTemplate-post: !include doc/schemas/eventSourceTemplates/request-post.json
+  - eventSourceTemplate-getAll: !include doc/schemas/eventSourceTemplates/response-array-get.json
+  - eventType-get: !include doc/schemas/eventTypes/response-get.json
+  - eventType-patch: !include doc/schemas/eventTypes/request-patch.json
+  - eventType-post: !include doc/schemas/eventTypes/request-post.json
+  - eventType-getAll: !include doc/schemas/eventTypes/response-array-get.json
+  - organization-get: !include doc/schemas/organizations/response-get.json
+  - organization-patch: !include doc/schemas/organizations/request-patch.json
+  - organization-post: !include doc/schemas/organizations/request-post.json
+  - organization-getAll: !include doc/schemas/organizations/response-array-get.json
+  - rule-get: !include doc/schemas/rules/response-get.json
+  - rule-patch: !include doc/schemas/rules/request-patch.json
+  - rule-post: !include doc/schemas/rules/request-post.json
+  - rule-getAll: !include doc/schemas/rules/response-array-get.json
+  - user-get: !include doc/schemas/users/response-get.json
+  - user-patch: !include doc/schemas/users/request-patch.json
+  - user-post: !include doc/schemas/users/request-post.json
+  - user-getAll: !include doc/schemas/users/response-array-get.json
+
+traits:
+  - auth: !include doc/traits/authentication.raml
+
+/auth: !include doc/resources/auth.raml
+/actionTargetInstances: !include doc/resources/actionTargetInstances.raml
+/actionTargetTemplates: !include doc/resources/actionTargetTemplates.raml
+/actionTypes: !include doc/resources/actionTypes.raml
+/events: !include doc/resources/events.raml
+/eventSourceInstances: !include doc/resources/eventSourceInstances.raml
+/eventSourceTemplates: !include doc/resources/eventSourceTemplates.raml
+/eventTypes: !include doc/resources/eventTypes.raml
+/organizations: !include doc/resources/organizations.raml
+/rules: !include doc/resources/rules.raml
+/users: !include doc/resources/users.raml
+
+# ######################################################################################################################
+# LEGACY
+# ######################################################################################################################
+
+#/events:
+#  description: This endpoint is used by event sources (e.g. sensors) to notify the occurence of events.
+#  post:
+#    description: Notify a list of events that have been captured by an event source. The events are processed asynchronously by the iFLUX service. The client must always send a list, even if it wants to notify a single event.
+#    body:
+#      application/json:
+#        example: |
+#          [
+#            {
+#              "timestamp" : "2015-01-12T05:21:07Z",
+#              "source" : "/event-sources/JI8928JFK",
+#              "type" : "/eventTypes/temperatureEventSchema",
+#              "properties" : {
+#                "temperature" : 22.5,
+#                "location" : "room 1"
+#              }
+#            },
+#            {
+#              "timestamp" : "2015-01-12T05:22:07Z",
+#              "source" : "/event-sources/JI8928JFK",
+#              "type" : "/eventTypes/temperatureEventSchema",
+#              "properties" : {
+#                "temperature" : 22.8,
+#                "location" : "room 1"
+#              }
+#            }
+#          ]
+#    responses:
+#      202:
+#        description: Accepted
+#
+#/actions:
+#  description: This endpoint is implemented by action targets (e.g. actuators) and invoked by the iFLUX middleware to trigger actions.
+#  post:
+#    description: Trigger a list of actions, after the evaluation of rules and in reaction to the notification of events. The actions can be processes asynchronously.
+#    body:
+#      application/json:
+#        example: |
+#          [
+#            {
+#              "context" : {
+#                "event" : "not used in this version of the api",
+#                "rule" : "not used in this version of the api",
+#              },
+#              "type" : "/actionTypes/sendAlertViaEmailSchema",
+#              "properties" : {
+#                "email" : "user.name@iflux.io",
+#                "subject" : "Alert: something has happened!",
+#                "body" : "An event has been notified to iFLUX by a source and a rule states that we should inform you about it."
+#              }
+#            },
+#            {
+#              "context" : {
+#                "event" : "not used in this version of the api",
+#                "rule" : "not used in this version of the api",
+#              },
+#              "type" : "/actionTypes/sendAlertViaEmailSchema",
+#              "properties" : {
+#                "email" : "user.name@iflux.io",
+#                "subject" : "Alert: something has happened!",
+#                "body" : "An event has been notified to iFLUX by a source and a rule states that we should inform you about it."
+#              }
+#            }
+#          ]
+#    responses:
+#      202:
+#        description: Accepted
+#
+#/rules:
+#  description: This endpoint is used to manage the rules evaluated by iFLUX when events are notified.
+#  get:
+#    description: Get the list of rules.
+#    responses:
+#      200:
+#        body:
+#          application/json:
+#            example: |
+#              [
+#                {
+#                  "description": "If any event is notified, then write a message in Slack",
+#                  "reference": "NOVA-TIME-EVENT",
+#                  "enabled": true,
+#                  "if": {
+#                    "eventSource": "*",
+#                    "eventType": "io.iflux.events.current-time-event",
+#                    "eventProperties": {}
+#                  },
+#                  "then": {
+#                    "actionTarget": "https://nova-slack.herokuapp.com",
+#                    "actionSchema": "{\"type\":\"sendSlackMessage\",\"properties\":{\"channel\":\"aware\",\"message\":\"Tic Tac. ({{ timestamp }}) {{ properties.description}} {{ properties.hostname}}.\"}}"
+#                  },
+#                  "id": "1"
+#                }
+#              ]
+#
+#  post:
+#    description: Create a new rule.
+#    body:
+#      application/json:
+#        example: |
+#          {
+#            "description" : "When a temperature event is received, notify Bob by email.",
+#            "reference": "TEMPERATURE-EMAIL-NOTIFICATION",
+#            "enabled": true,
+#            "if" : {
+#              "eventSource" : "/event-sources/JI8928JFK",
+#              "eventType" : "/eventTypes/temperatureEventSchema",
+#              "eventProperties" : {}
+#            }
+#            "then" : {
+#              "actionTarget" : "https://mail-gateway.iflux.io/api",
+#              "actionSchema" : "{\"type\" : \"sendEmail\", \"properties\" : {\"to\" : \"bob@iflux.io\", \"subject\" : \"New temperature\", \"body\" : \"The temperature in {{ properties.location }} is now: {{ properties.temperature }}.\" }}"
+#            }
+#          }
+#    responses:
+#      201:
+#        description: Created
+#  /{id}:
+#    patch:
+#      description: |
+#        Update a rule partially. You can provide a partial content for the rule and only the content received
+#        will be updated.
+#      body:
+#        application/json:
+#          example: |
+#            {
+#              "description" : "When a temperature event is received, notify Bob by email.",
+#            }
+#
+#            or
+#
+#            {
+#              "if" : {
+#                "eventSource" : "/event-sources/JI8928JFK",
+#              }
+#            }
+#
+#      responses:
+#        200:
+#          description: Ok
+#    delete:
+#      description: Delete a rule.
+#      responses:
+#        204:
+#          description: No Content
+#
+#  /actionSchema:
+#    /validate:
+#      post:
+#        description: |
+#          Validates the action schema. A `sample` must be provided and must contains all the fields used in the action
+#          schema. The action schema must be a valid JSON format escaped like it is send in the `POST /rules`.
+#
+#          The validation process will parse the JSON, convert it through the template engine `Handlebars` and finally
+#          a replacement of the placeholders is done through `Handlebars`.
+#        body:
+#          application/json:
+#            example: |
+#              {
+#                "sample": {
+#                  "timestamp": "2015-01-12T05:22:07Z",
+#                  "properties": {
+#                    "location": "Lausanne",
+#                    "temperature": 22.5
+#                  }
+#                },
+#                "actionSchema" : "{\"type\" : \"sendEmail\", \"properties\" : {\"to\" : \"bob@iflux.io\", \"subject\" : \"New temperature\", \"body\" : \"The temperature in {{ properties.location }} is now: {{ properties.temperature }}.\" }}"
+#              }
+#        responses:
+#          200:
+#            description: The result correspond to the action schema processed.
+#            body:
+#              application/json:
+#                example: |
+#                  {
+#                    "type" : "sendEmail",
+#                    "properties" : {
+#                      "to" : "bob@iflux.io",
+#                      "subject" : "New temperature",
+#                      "body\" : "The temperature in Lausanne is now: 22.5."
+#                    }
+#                  }
+#          422:
+#            description: A processing error occured.
+#            body:
+#              application/json:
+#                example: |
+#                  {
+#                    error: "Invalid JSON format"
+#                  }

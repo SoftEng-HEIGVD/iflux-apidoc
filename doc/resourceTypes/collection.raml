@@ -1,0 +1,31 @@
+usage: This resourceType should be used for any collection of items
+description: The collection of <<humanName | !pluralize>>.
+
+get:
+  description: |
+    Get all <<humanName | !pluralize>>
+  responses:
+    200:
+      description: List of <<humanName>> or empty list `[]`.
+      body:
+        schema: <<schemaBaseName>>-getAll
+        example: <<exampleGetResponse>>
+
+post:
+  description: Create a new <<humanName>>
+  body:
+    schema: <<schemaBaseName>>-post
+    example: <<examplePostRequest>>
+  responses:
+    201:
+      description: Created
+      headers:
+        location:
+          description: Use the URL to retrieve the <<humanName>> resource.
+          type: string
+          example: "Location: <<resourcePath>>/{id}"
+    422:
+      description: Validation errors
+      body:
+        schema: errors
+        example: <<examplePostError>>
