@@ -3,6 +3,8 @@ var pkg = require('./package');
 module.exports = function (grunt) {
 	var devMode = (grunt.option('devMode'));
 	var schemaIndentBordered = (grunt.option('schemaIndentBordered'));
+	var host = (grunt.option('host') || '127.0.0.1');
+
 
 	// configure the tasks
 	var config = {
@@ -17,7 +19,7 @@ module.exports = function (grunt) {
       },
       apidoc: {
 	      files: {
-          'build/api.html': 'doc/api.raml'
+          'build/index.html': 'doc/api.raml'
         }
       }
     },
@@ -35,8 +37,8 @@ module.exports = function (grunt) {
 		'http-server': {
 			'dev': {
 				root: './build',
-				port: 7000,
-				host: "127.0.0.1",
+				port: 4000,
+				host: host,
 				showDir: true,
 				autoIndex: true,
 				defaultExt: "html",
@@ -44,8 +46,8 @@ module.exports = function (grunt) {
 			},
 			'standalone': {
 				root: './build',
-				port: 7000,
-				host: "127.0.0.1",
+				port: 4000,
+				host: host,
 				showDir: true,
 				autoIndex: true,
 				defaultExt: "html",

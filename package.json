@@ -2,7 +2,7 @@
   "name": "iflux-api-doc",
   "version": "0.0.2",
   "description": "Documentation of the iFLUX API",
-  "repository": "git@github.com:SoftEng-HEIGVD/iFLUX.io.git",
+  "repository": "git@github.com:SoftEng-HEIGVD/iflux-apidoc.git",
   "author": "SoftEng-HEIGVD",
   "devDependencies": {
     "debug": "~0.8.1",
