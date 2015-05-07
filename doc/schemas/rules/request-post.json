@@ -17,6 +17,7 @@
     },
     "conditionEvaluation": {
       "description": "The way that the conditions array is evaluated.",
+      "type": "string",
       "enum": [ "or", "and" ]
     },
     "conditions": {
