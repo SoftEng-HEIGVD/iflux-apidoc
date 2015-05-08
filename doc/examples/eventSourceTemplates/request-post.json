@@ -14,5 +14,12 @@
     },
     "url": "http://some.cool.weather.service/configuration",
     "token": "<JSON Web Token>"
+  },
+  "configurationUi": {
+    "schemaForm": [ "captorId", {
+      "type": "submit",
+      "style": "btn-primary",
+      "title": "Submit"
+    } ]
   }
 }

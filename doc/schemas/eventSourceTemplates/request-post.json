@@ -33,6 +33,16 @@
         }
       },
       "required": [ "schema", "url" ]
+    },
+    "configurationUi": {
+      "description": "Provide the configuration for the dynamic UI.",
+      "type": "object",
+      "properties": {
+        "schemaForm": {
+          "description": "Valid form schema accordingly to: http://schemaform.io",
+          "type": "array"
+        }
+      }
     }
   },
   "required": [ "name", "organizationId" ]
