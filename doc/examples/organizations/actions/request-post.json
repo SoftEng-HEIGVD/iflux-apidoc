@@ -1,0 +1,6 @@
+{
+  "type": "addUser",
+  "payload": {
+    "userId": 1
+  }
+}

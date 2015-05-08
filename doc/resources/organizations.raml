@@ -31,3 +31,14 @@ post:
     responses:
       404:
         description: When the organization is not found or is not associated with the singned in user.
+
+  /actions:
+    is: [ auth ]
+    description: Execute different action on the organization.
+
+    post:
+      securedBy: [ jwt: { type: 'owner' } ]
+      description: Post an action
+      body:
+        schema: organization-action-post
+        example: !include ../examples/organizations/actions/request-post.json

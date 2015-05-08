@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Organization action",
+  "description": "Execute an action for the organization. Only one action at a time.",
+  "type": "object",
+  "oneOf": [ {
+    "description": "Action: Add user to an organization",
+    "type": "object",
+    "required": [ "type", "userId" ],
+    "properties": {
+      "type": {
+        "description": "addUser action type",
+        "type": "string",
+        "enum": [
+          "addUser"
+        ]
+      },
+      "userId": {
+        "description": "User id",
+        "type": "integer"
+      }
+    }
+  }, {
+    "description": "Action: Remove user from an organization",
+    "type": "object",
+    "required": [ "type", "userId" ],
+    "properties": {
+      "type": {
+        "description": "removeUser action type",
+        "type": "string",
+        "enum": [
+          "removeUser"
+        ]
+      },
+      "userId": {
+        "description": "User id",
+        "type": "integer"
+      }
+    }
+  }],
+  "required": [ "name" ]
+}
