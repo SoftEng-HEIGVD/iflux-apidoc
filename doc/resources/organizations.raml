@@ -27,10 +27,6 @@ post:
 
   patch:
     securedBy: [ jwt: { type: 'owner' }, test ]
-    description: Patch the organization. **Can only be done by a user associated to the organization.**
-    responses:
-      404:
-        description: When the organization is not found or is not associated with the singned in user.
 
   /users:
     is: [ auth ]
