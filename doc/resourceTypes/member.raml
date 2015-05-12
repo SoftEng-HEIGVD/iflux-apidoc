@@ -36,8 +36,10 @@ patch:
           example: "Location: <<resourcePath>>"
     304:
       description: Returned when the resource <<humanName>> is not modified.
-    404:
-      description: Returned when the ID for the resource <<humanName>> is not found.
+    403:
+      description: |
+        Returned when the ID for the resource <<resourcePathName | !singularize>> is not found or
+        the user does not have access to it.
     422:
       description: Validation errors
       body:
@@ -49,5 +51,7 @@ delete?:
   responses:
     200:
       description: Returned when the resource <<humanName>> is deleted.
-    404:
-      description: Returned when the ID for the resource <<humanName>> is not found.
+    403:
+      description: |
+        Returned when the ID for the resource <<resourcePathName | !singularize>> is not found or
+        the user does not have access to it.
