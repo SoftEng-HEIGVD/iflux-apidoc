@@ -1,0 +1,10 @@
+/organizations:
+  is: [ auth ]
+  get:
+    description: Retrive the list of all organization where the is a member.
+    responses:
+      200:
+        description: List of organizations or empty list `[]`.
+        body:
+          schema: organization-getAll
+          example: !include ../examples/organizations/response-array-get.json

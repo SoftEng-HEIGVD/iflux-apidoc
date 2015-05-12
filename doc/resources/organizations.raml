@@ -32,6 +32,18 @@ post:
       404:
         description: When the organization is not found or is not associated with the singned in user.
 
+  /users:
+    is: [ auth ]
+    get:
+      securedBy: [ jwt: { type: 'owner' } ]
+      description: Retrieve all the users for an organization.
+      responses:
+        200:
+          description: List of users or empty list `[]`.
+          body:
+            schema: user-getAll
+            example: !include ../examples/users/response-array-get.json
+
   /actions:
     is: [ auth ]
     description: Execute different action on the organization.
