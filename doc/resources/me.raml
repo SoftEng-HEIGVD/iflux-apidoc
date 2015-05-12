@@ -1,6 +1,7 @@
 /organizations:
   is: [ auth ]
   get:
+    securedBy: [ jwt: { type: 'owner' }, test ]
     description: Retrive the list of all organization where the is a member.
     responses:
       200:

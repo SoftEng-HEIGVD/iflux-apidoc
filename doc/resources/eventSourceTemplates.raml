@@ -39,7 +39,7 @@ post:
   securedBy: [ jwt: { type: 'owner' }, test ]
 
 
-/{eventSourceId}:
+/{eventSourceTemplateId}:
   is: [ auth ]
   type:
     member:
@@ -50,6 +50,6 @@ post:
       examplePatchRequest: !include ../examples/eventSourceTemplates/request-patch.json
       examplePatchError: !include ../examples/eventSourceTemplates/response-patch-error.json
   get:
-    securedBy: [ jwt: { type: 'owner' } ]
+    securedBy: [ jwt: { type: 'owner' }, test ]
   patch:
-    securedBy: [ jwt: { type: 'owner' } ]
+    securedBy: [ jwt: { type: 'owner' }, test ]

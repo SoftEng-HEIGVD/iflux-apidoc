@@ -31,7 +31,7 @@ post:
   /users:
     is: [ auth ]
     get:
-      securedBy: [ jwt: { type: 'owner' } ]
+      securedBy: [ jwt: { type: 'owner' }, test ]
       description: Retrieve all the users for an organization.
       responses:
         200:
