@@ -1,6 +1,4 @@
 {
   "type": "addUser",
-  "payload": {
-    "userId": 1
-  }
+  "email": "henri.dupont@localhost.localdomain"
 }

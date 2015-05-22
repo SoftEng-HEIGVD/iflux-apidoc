@@ -15,9 +15,9 @@
           "addUser"
         ]
       },
-      "userId": {
-        "description": "User id",
-        "type": "integer"
+      "email": {
+        "description": "The email address to add the user",
+        "type": "string"
       }
     }
   }, {
@@ -32,9 +32,9 @@
           "removeUser"
         ]
       },
-      "userId": {
-        "description": "User id",
-        "type": "integer"
+      "email": {
+        "description": "The email address to remove the user",
+        "type": "string"
       }
     }
   }],
