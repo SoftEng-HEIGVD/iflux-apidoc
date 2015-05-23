@@ -45,7 +45,7 @@ post:
     description: Execute different action on the organization.
 
     post:
-      securedBy: [ jwt: { type: 'owner' } ]
+      securedBy: [ jwt: { type: 'owner' }, test ]
       description: Post an action
       body:
         schema: organization-action-post

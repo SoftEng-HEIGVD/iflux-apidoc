@@ -7,7 +7,7 @@ type:
     examplePostRequest: !include ../examples/actionTargetTemplates/request-post.json
     examplePostError: !include ../examples/actionTargetTemplates/response-post-error.json
 get:
-#  securedBy: [ test ]
+  securedBy: [ test ]
   description: |
     By default, retrieve all the public action target template that a user can visualize.
 
@@ -36,7 +36,7 @@ get:
     403:
       description: If the user is not a member of the organization that owns the action target template.
 post:
-  securedBy: [ jwt: { type: 'owner' } ]
+  securedBy: [ jwt: { type: 'owner' }, test ]
 
 
 /{actionTargetId}:
@@ -50,6 +50,6 @@ post:
       examplePatchRequest: !include ../examples/actionTargetTemplates/request-patch.json
       examplePatchError: !include ../examples/actionTargetTemplates/response-patch-error.json
   get:
-    securedBy: [ jwt: { type: 'owner' } ]
+    securedBy: [ jwt: { type: 'owner' }, test ]
   patch:
-    securedBy: [ jwt: { type: 'owner' } ]
+    securedBy: [ jwt: { type: 'owner' }, test ]
