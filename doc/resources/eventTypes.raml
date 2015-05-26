@@ -7,7 +7,7 @@ type:
     examplePostRequest: !include ../examples/eventTypes/request-post.json
     examplePostError: !include ../examples/eventTypes/response-post-error.json
 get:
-  securedBy: [ jwt: { type: 'owner' } ]
+  securedBy: [ jwt: { type: 'owner' }, test ]
   description: |
     You cannot retrieve all the event types accross all the event source templates. You **MUST** provide
     the `eventSourceTemplateId` to get all the event types from it.
@@ -29,7 +29,7 @@ get:
     403:
       description: If the user is not a member of the organization that owns the event source template or not found.
 post:
-  securedBy: [ jwt: { type: 'owner' } ]
+  securedBy: [ jwt: { type: 'owner' }, test ]
   responses:
     403:
       description: If the user is not a member of the organization that owns the event source template.
@@ -45,12 +45,12 @@ post:
       examplePatchRequest: !include ../examples/eventTypes/request-patch.json
       examplePatchError: !include ../examples/eventTypes/response-patch-error.json
   get:
-    securedBy: [ jwt: { type: 'owner' } ]
+    securedBy: [ jwt: { type: 'owner' }, test ]
     responses:
       403:
         description: If the user is not a member of the organization that owns the event source template.
   patch:
-    securedBy: [ jwt: { type: 'owner' } ]
+    securedBy: [ jwt: { type: 'owner' }, test ]
     responses:
       403:
         description: If the user is not a member of the organization that owns the event source template.
