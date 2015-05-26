@@ -27,7 +27,7 @@ get:
     422:
       description: If the `eventSourceTemplateId` is not provided.
     403:
-      description: If the user is not a member of the organization that owns the event source template.
+      description: If the user is not a member of the organization that owns the event source template or not found.
 post:
   securedBy: [ jwt: { type: 'owner' } ]
   responses:

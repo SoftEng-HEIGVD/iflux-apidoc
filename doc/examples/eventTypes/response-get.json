@@ -1,6 +1,6 @@
 {
   "id": 1,
-  "key": "azausimemd",
+  "eventTypeId": "azausimemd",
   "name": "ifluxTemperatureCaptor/increase",
   "description": "Temperature increase",
   "eventSourceTemplateId": 1,
