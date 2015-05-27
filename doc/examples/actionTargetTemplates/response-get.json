@@ -12,7 +12,9 @@
         "botId": {
           "type": "string"
         }
-      }
+      },
+      "additionalProperties": false,
+      "required": [ "botId" ]
     },
     "url": "http://slackgateway.bot.instance/configuration",
     "token": "<JSON Web Token>"
