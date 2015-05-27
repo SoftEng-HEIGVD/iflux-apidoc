@@ -7,7 +7,7 @@ type:
     examplePostRequest: !include ../examples/actionTargetInstances/request-post.json
     examplePostError: !include ../examples/actionTargetInstances/response-post-error.json
 get:
-  securedBy: [ jwt: { type: 'owner' } ]
+  securedBy: [ jwt: { type: 'owner' }, test ]
   description: |
     You can retrieve the action target instances through:
       * Event source template given through `actionTargetTemplateId`
@@ -49,7 +49,7 @@ get:
     403:
       description: If the user is not a member of the organization that owns the action target instance.
 post:
-  securedBy: [ jwt: { type: 'owner' } ]
+  securedBy: [ jwt: { type: 'owner' }, test ]
   responses:
     403:
       description: If the user is not a member of the organization that owns the action target instance.
@@ -80,12 +80,12 @@ post:
       examplePatchRequest: !include ../examples/actionTargetInstances/request-patch.json
       examplePatchError: !include ../examples/actionTargetInstances/response-patch-error.json
   get:
-    securedBy: [ jwt: { type: 'owner' } ]
+    securedBy: [ jwt: { type: 'owner' }, test ]
     responses:
       403:
         description: If the user is not a member of the organization that owns the action target instance.
   patch:
-    securedBy: [ jwt: { type: 'owner' } ]
+    securedBy: [ jwt: { type: 'owner' }, test ]
     responses:
       403:
         description: If the user is not a member of the organization that owns the action target instance.
