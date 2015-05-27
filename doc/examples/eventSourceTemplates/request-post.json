@@ -10,7 +10,9 @@
         "captorId": {
           "type": "string"
         }
-      }
+      },
+      "additionalProperties": false,
+      "required": [ "captorId" ]
     },
     "url": "http://some.cool.weather.service/configuration",
     "token": "<JSON Web Token>"

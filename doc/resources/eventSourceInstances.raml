@@ -7,14 +7,15 @@ type:
     examplePostRequest: !include ../examples/eventSourceInstances/request-post.json
     examplePostError: !include ../examples/eventSourceInstances/response-post-error.json
 get:
-  securedBy: [ jwt: { type: 'owner' } ]
+  securedBy: [ jwt: { type: 'owner' }, test ]
   description: |
-    You cannot retrieve all the event source instances accross all the event source templates or organzitions.
+    You can retrieve the event source instances through:
+      * Event source template given through `eventSourceTemplateId`
+      * Organization given through `organizationId`
+      * All organizations throuhg `allOrganizations`
 
-    You **MUST** provide the `eventSourceTemplateId` or `organizationId` to get all the event source instances.
-
-    - If both `eventSourceTemplateId` and `organizationId` are provided, only the `eventSourceTemplateId`is taken
-    into account for the filtering.
+    At least one of these parementers **MUST** be given. In case, multiple parameters are provided, only one will be
+    applied and in this order: `eventSourceTemplateId`, `organizationId` and `allOrganizations`.
   queryParameters:
     eventSourceTemplateId:
       description: |
@@ -34,18 +35,40 @@ get:
       required: true
       example: |
         `organizationId=1`
+    allOrganizations:
+      description: Filter the event source instances to retrieve all of them accross all the organizations where the user is member of.
+      type: integer
+      required: false
+      example: |
+        `allOrganizations` or `allOrganizations=true`
   responses:
     200:
       description: List of event types or empty list `[]`.
     422:
-      description: If the `eventSourceTemplateId` or `organizationId` is not provided.
+      description: If the `eventSourceTemplateId`, `organizationId` or `allOrganizations` is not provided.
     403:
       description: If the user is not a member of the organization that owns the event source instance.
 post:
-  securedBy: [ jwt: { type: 'owner' } ]
+  securedBy: [ jwt: { type: 'owner' }, test ]
   responses:
     403:
       description: If the user is not a member of the organization that owns the event source instance.
+    422:
+      description: |
+        Validation errors.
+
+        You will receive these validations errors:
+
+        * `{ "organizationId": [ "No organization found." ] }` when:
+          * No organization found from the ID given
+          * You have no access to the organization
+
+        * `{ "eventSourceTemplateId": [ "No event source template found." ] }` when:
+          * No event source template found from the ID given
+          * You have no access to the event source template
+          * You cannot create an event source instance from an event source template in a different organization. In other words
+            the organization ID is not the same as event source template organization ID.
+
 
 /{eventSourceInstanceId}:
   is: [ auth ]
@@ -58,12 +81,12 @@ post:
       examplePatchRequest: !include ../examples/eventSourceInstances/request-patch.json
       examplePatchError: !include ../examples/eventSourceInstances/response-patch-error.json
   get:
-    securedBy: [ jwt: { type: 'owner' } ]
+    securedBy: [ jwt: { type: 'owner' }, test ]
     responses:
       403:
         description: If the user is not a member of the organization that owns the event source instance.
   patch:
-    securedBy: [ jwt: { type: 'owner' } ]
+    securedBy: [ jwt: { type: 'owner' }, test ]
     responses:
       403:
         description: If the user is not a member of the organization that owns the event source instance.
