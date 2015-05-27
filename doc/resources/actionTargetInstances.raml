@@ -9,12 +9,13 @@ type:
 get:
   securedBy: [ jwt: { type: 'owner' } ]
   description: |
-    You cannot retrieve all the action target instances accross all the action target templates or organzitions.
+    You can retrieve the action target instances through:
+      * Event source template given through `actionTargetTemplateId`
+      * Organization given through `organizationId`
+      * All organizations throuhg `allOrganizations`
 
-    You **MUST** provide the `actionTargetTemplateId` or `organizationId` to get all the action target instances.
-
-    - If both `actionTargetTemplateId` and `organizationId` are provided, only the `actionTargetTemplateId`is taken
-    into account for the filtering.
+    At least one of these parementers **MUST** be given. In case, multiple parameters are provided, only one will be
+    applied and in this order: `actionTargetTemplateId`, `organizationId` and `allOrganizations`.
   queryParameters:
     actionTargetTemplateId:
       description: |
@@ -34,11 +35,17 @@ get:
       required: true
       example: |
         `organizationId=1`
+    allOrganizations:
+      description: Filter the action target instances to retrieve all of them accross all the organizations where the user is member of.
+      type: integer
+      required: false
+      example: |
+        `allOrganizations` or `allOrganizations=true`
   responses:
     200:
       description: List of event types or empty list `[]`.
     422:
-      description: If the `actionTargetTemplateId` or `organizationId` is not provided.
+      description: If the `actionTargetTemplateId`, `organizationId` or `allOrganizations` is not provided.
     403:
       description: If the user is not a member of the organization that owns the action target instance.
 post:
@@ -46,6 +53,21 @@ post:
   responses:
     403:
       description: If the user is not a member of the organization that owns the action target instance.
+    422:
+      description: |
+        Validation errors.
+
+        You will receive these validations errors:
+
+        * `{ "organizationId": [ "No organization found." ] }` when:
+          * No organization found from the ID given
+          * You have no access to the organization
+
+        * `{ "actionTargetTemplateId": [ "No action target template found." ] }` when:
+          * No action target template found from the ID given
+          * You have no access to the action target template
+          * You cannot create an event action target from an action target template in a different organization. In other words
+            the organization ID is not the same as action target template organization ID.
 
 /{actionTargetInstanceId}:
   is: [ auth ]
