@@ -15,23 +15,18 @@
       "description": "The organization for which the rule is configured.",
       "type": "integer"
     },
-    "conditionEvaluation": {
-      "description": "The way that the conditions array is evaluated.",
-      "type": "string",
-      "enum": [ "or", "and" ]
-    },
     "conditions": {
       "description": "List of condition to evaluate against events received.",
       "type": "array",
       "items": {
-        "description": "Condition to evaluate, **MUST** define at least one of the three condition criteria: `sourceInstanceId`, `eventTypeId` or `fn`.",
+        "description": "Condition to evaluate, **MUST** define at least one of the three condition criteria: `eventSourceInstanceId`, `eventTypeId` or `fn`.",
         "type": "object",
         "properties": {
           "description": {
             "description": "Human friendly text to let the possibility to explain what the condition evaluates.",
             "type": "string"
           },
-          "sourceInstanceId": {
+          "eventSourceInstanceId": {
             "description": "The event source instance to match on event received. If not present, joker `*` will be used.",
             "type": "integer"
           },
@@ -40,8 +35,19 @@
             "type": "integer"
           },
           "fn": {
-            "description": "Javascript function to let more complex condition matching. If not present, only `event source` and `event type` will be evaluated. **MUST** be a valid javascript function",
-            "type": "string"
+            "description": "Javascript expression to be evaluated. If not present, only `event source` and `event type` will be evaluated.",
+            "type": "object",
+            "properties": {
+              "expression": {
+                "description": "Javascript expression to let more complex condition matching. **MUST** be a valid javascript expression",
+                "type": "string"
+              },
+              "sampleEvent": {
+                "description": "A valid event that will be evaluated to true with the expression.",
+                "type": "object"
+              }
+            },
+            "required": [ "expression", "sample" ]
           }
         }
       },
@@ -58,8 +64,12 @@
             "description": "Human friendly text to let the possibility to explain what the transformation does.",
             "type": "string"
           },
-          "actionInstanceId": {
+          "actionTargetInstanceId": {
             "description": "The action instance to send the event transformed.",
+            "type": "integer"
+          },
+          "actionTypeId": {
+            "description": "The action type.",
             "type": "integer"
           },
           "eventTypeId": {
@@ -67,14 +77,40 @@
             "type": "integer"
           },
           "fn": {
-            "description": "Javascript function to let transform an event to a different data structure corresponding to the action data on the target. If not present, the event is used as the action data without transformation.",
-            "type": "string"
+            "description": "Javascript expression to transform the events. If not present, event is not transformed and passed as it is received.",
+            "type": "object",
+            "properties": {
+              "expression": {
+                "description": "Javascript expression to let more complex transformation. **MUST** be a valid javascript expression",
+                "type": "string"
+              },
+              "sample": {
+                "description": "A valid sample to validate the transformation expression.",
+                "type": "object",
+                "properties": {
+                  "event": {
+                    "description": "A valid event for the transformation expression validation.",
+                    "type": "object"
+                  },
+                  "eventSourceTemplateId": {
+                    "description": "The event source template to inject to the transformation validation.",
+                    "type": "integer"
+                  },
+                  "eventTypeId": {
+                    "description": "The event type to inject to the transformation validation.",
+                    "type": "integer"
+                  }
+                },
+                "required": [ "event" ]
+              }
+            },
+            "required": [ "expression", "sample" ]
           }
         },
-        "required": [ "actionInstanceId", "actionTypeId" ]
+        "required": [ "actionTargetInstanceId", "actionTypeId" ]
       },
       "minItems": 1
     }
   },
-  "required": [ "name", "active", "organizationId", "conditionsEvaluation", "conditions", "transformations" ]
+  "required": [ "name", "active", "organizationId", "conditions", "transformations" ]
 }

@@ -7,10 +7,12 @@ type:
     examplePostRequest: !include ../examples/rules/request-post.json
     examplePostError: !include ../examples/rules/response-post-error.json
 get:
-  securedBy: [ jwt: { type: 'owner' } ]
+  securedBy: [ jwt: { type: 'owner' }, test ]
   description: |
-    You cannot retrieve all the rules accross all the organizations. You **MUST** provide
-    the `organizationId` to get all the rules for it.
+    By default, retrieve all the rules that a user can visualize.
+
+    - If an `organizationId` is provided, then all the rules of the organization are
+    retrieved. The user must be a member of the organization, otherwise, he will get a `403`.
   queryParameters:
     organizationId:
       description: |
@@ -22,12 +24,10 @@ get:
       example: |
         `organizationId=1`
   responses:
-    422:
-      description: If the `organizationId` is not provided.
     403:
       description: If the user is not a member of the organization.
 post:
-  securedBy: [ jwt: { type: 'owner' } ]
+  securedBy: [ jwt: { type: 'owner' }, test ]
   responses:
     403:
       description: If the user is not a member of the organization where the new rule will be defined.
@@ -36,19 +36,25 @@ post:
   is: [ auth ]
   type:
     member:
-      humanName: rules
+      humanName: rule
       schemaBaseName: rule
       identifierName: ruleId
       exampleGetResponse: !include ../examples/rules/response-get.json
       examplePatchRequest: !include ../examples/rules/request-patch.json
       examplePatchError: !include ../examples/rules/response-patch-error.json
   get:
-    securedBy: [ jwt: { type: 'owner' } ]
+    securedBy: [ jwt: { type: 'owner' }, test ]
     responses:
       403:
         description: If the user is not a member of the organization that owns the rule.
   patch:
-    securedBy: [ jwt: { type: 'owner' } ]
+    securedBy: [ jwt: { type: 'owner' }, test ]
+    responses:
+      403:
+        description: If the user is not a member of the organization that owns the rule.
+
+  delete:
+    securedBy: [ jwt: { type: 'owner' }, test ]
     responses:
       403:
         description: If the user is not a member of the organization that owns the rule.
