@@ -21,6 +21,12 @@ get:
       required: true
       example: |
         `eventSourceTemplateId=1`
+    name:
+      type: string
+      required: false
+      description: Use this parameter to apply a filter on the name. Can be combined with other parameters.
+      example: |
+        `name=iFlu%`
   responses:
     200:
       description: List of event types or empty list `[]`.
