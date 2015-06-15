@@ -8,6 +8,12 @@ type:
     examplePostError: !include ../examples/organizations/response-post-error.json
 get:
   securedBy: [ test ]
+  queryParameters:
+    name:
+      type: string
+      required: false
+      description: Use this parameter to apply a filter on the name.
+      example: name=iFlu%
 post:
   securedBy: [ test ]
   description: Create a new organization and assign the signed in user.
