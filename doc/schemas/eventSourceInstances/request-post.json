@@ -7,6 +7,10 @@
       "description": "A name to identify the event source instance.",
       "type": "string"
     },
+    "organizationId": {
+      "description": "The organization.",
+      "type": "integer"
+    },
     "eventSourceTemplateId": {
       "description": "The event source template to instantiate.",
       "type": "integer"
@@ -20,5 +24,5 @@
       "type": "json"
     }
   },
-  "required": [ "name", "eventSourceTemplateId", "configuration" ]
+  "required": [ "name", "organizationId", "eventSourceTemplateId", "configuration" ]
 }
