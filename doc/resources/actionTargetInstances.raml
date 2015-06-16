@@ -78,13 +78,12 @@ post:
           * You cannot create an event action target from an action target template in a different organization. In other words
             the organization ID is not the same as action target template organization ID.
 
-/{actionTargetInstanceId}:
+/{id}:
   is: [ auth ]
   type:
     member:
       humanName: action target instances
       schemaBaseName: actionTargetInstance
-      identifierName: actionTargetInstanceId
       exampleGetResponse: !include ../examples/actionTargetInstances/response-get.json
       examplePatchRequest: !include ../examples/actionTargetInstances/request-patch.json
       examplePatchError: !include ../examples/actionTargetInstances/response-patch-error.json

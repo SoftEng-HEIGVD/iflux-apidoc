@@ -78,13 +78,12 @@ post:
           * You cannot create an event source instance from an event source template in a different organization. In other words
             the organization ID is not the same as event source template organization ID.
 
-/{eventSourceInstanceId}:
+/{id}:
   is: [ auth ]
   type:
     member:
       humanName: event source instances
       schemaBaseName: eventSourceInstance
-      identifierName: eventSourceInstanceId
       exampleGetResponse: !include ../examples/eventSourceInstances/response-get.json
       examplePatchRequest: !include ../examples/eventSourceInstances/request-patch.json
       examplePatchError: !include ../examples/eventSourceInstances/response-patch-error.json

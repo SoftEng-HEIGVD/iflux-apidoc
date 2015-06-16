@@ -45,13 +45,12 @@ post:
   securedBy: [ jwt: { type: 'owner' }, test ]
 
 
-/{actionTargetId}:
+/{id}:
   is: [ auth ]
   type:
     member:
       humanName: action target template
       schemaBaseName: actionTargetTemplate
-      identifierName: actionTargetTemplateId
       exampleGetResponse: !include ../examples/actionTargetTemplates/response-get.json
       examplePatchRequest: !include ../examples/actionTargetTemplates/request-patch.json
       examplePatchError: !include ../examples/actionTargetTemplates/response-patch-error.json

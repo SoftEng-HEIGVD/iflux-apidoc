@@ -43,13 +43,12 @@ post:
     403:
       description: If the user is not a member of the organization that owns the action target template.
 
-/{actionTypeId}:
+/{id}:
   is: [ auth ]
   type:
     member:
       humanName: action types
       schemaBaseName: actionType
-      identifierName: actionTypeId
       exampleGetResponse: !include ../examples/actionTypes/response-get.json
       examplePatchRequest: !include ../examples/actionTypes/request-patch.json
       examplePatchError: !include ../examples/actionTypes/response-patch-error.json

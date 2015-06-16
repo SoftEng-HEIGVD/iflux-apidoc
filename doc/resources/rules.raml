@@ -38,13 +38,12 @@ post:
     403:
       description: If the user is not a member of the organization where the new rule will be defined.
 
-/{ruleId}:
+/{id}:
   is: [ auth ]
   type:
     member:
       humanName: rule
       schemaBaseName: rule
-      identifierName: ruleId
       exampleGetResponse: !include ../examples/rules/response-get.json
       examplePatchRequest: !include ../examples/rules/request-patch.json
       examplePatchError: !include ../examples/rules/response-patch-error.json

@@ -43,13 +43,12 @@ post:
     403:
       description: If the user is not a member of the organization that owns the event source template.
 
-/{eventTypeId}:
+/{id}:
   is: [ auth ]
   type:
     member:
       humanName: event types
       schemaBaseName: eventType
-      identifierName: eventTypeId
       exampleGetResponse: !include ../examples/eventTypes/response-get.json
       examplePatchRequest: !include ../examples/eventTypes/request-patch.json
       examplePatchError: !include ../examples/eventTypes/response-patch-error.json

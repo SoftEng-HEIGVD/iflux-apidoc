@@ -45,13 +45,12 @@ post:
   securedBy: [ jwt: { type: 'owner' }, test ]
 
 
-/{eventSourceTemplateId}:
+/{id}:
   is: [ auth ]
   type:
     member:
       humanName: event source template
       schemaBaseName: eventSourceTemplate
-      identifierName: eventSourceTemplateId
       exampleGetResponse: !include ../examples/eventSourceTemplates/response-get.json
       examplePatchRequest: !include ../examples/eventSourceTemplates/request-patch.json
       examplePatchError: !include ../examples/eventSourceTemplates/response-patch-error.json

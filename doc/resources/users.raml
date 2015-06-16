@@ -8,13 +8,12 @@ type:
     examplePostRequest: !include ../examples/users/request-post.json
     examplePostError: !include ../examples/users/response-post-error.json
 
-/{userId}:
+/{id}:
   is: [ auth ]
   type:
     member:
       humanName: user
       schemaBaseName: user
-      identifierName: userId
       exampleGetResponse: !include ../examples/users/response-get.json
       examplePatchRequest: !include ../examples/users/request-patch.json
       examplePatchError: !include ../examples/users/response-patch-error.json

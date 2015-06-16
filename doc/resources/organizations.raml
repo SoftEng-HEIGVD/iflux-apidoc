@@ -19,13 +19,12 @@ post:
   securedBy: [ test ]
   description: Create a new organization and assign the signed in user.
 
-/{organizationId}:
+/{id}:
   is: [ auth ]
   type:
     member:
       humanName: organization
       schemaBaseName: organization
-      identifierName: organizationId
       exampleGetResponse: !include ../examples/organizations/response-get.json
       examplePatchRequest: !include ../examples/organizations/request-patch.json
       examplePatchError: !include ../examples/organizations/response-patch-error.json
