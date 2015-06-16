@@ -2,7 +2,7 @@
   "timestamp" : "2015-01-12T05:21:07Z",
   "sourceId": "abcdefghij",
   "typeId": "jihgfedcba",
-  "data": {
+  "properties": {
     "temperature" : 22.5,
     "location" : "room 1"
   }
@@ -15,7 +15,7 @@
     "timestamp" : "2015-01-12T05:21:07Z",
     "sourceId": "abcdefghij",
     "typeId": "jihgfedcba",
-    "data": {
+    "properties": {
       "temperature" : 22.5,
       "location" : "room 1"
     }
