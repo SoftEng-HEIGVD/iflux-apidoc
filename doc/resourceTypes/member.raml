@@ -33,7 +33,13 @@ patch:
         location:
           description: Use the URL to retrieve the <<humanName>> resource.
           type: string
-          example: "Location: <<resourcePath>>"
+          example: |
+            `Location: <<resourcePath>>`
+        x-iflux-generated-id?:
+          description: The generated id given by iFLUX
+          type: string
+          example: |
+            `x-iflux-generated-id: fgh14kdasddg`
     304:
       description: Returned when the resource <<humanName>> is not modified.
     403:

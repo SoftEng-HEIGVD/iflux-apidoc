@@ -57,6 +57,9 @@ get:
 post:
   securedBy: [ jwt: { type: 'owner' }, test ]
   responses:
+    201:
+      headers:
+        x-iflux-generated-id:
     403:
       description: If the user is not a member of the organization that owns the action target instance.
     422:
@@ -93,5 +96,8 @@ post:
   patch:
     securedBy: [ jwt: { type: 'owner' }, test ]
     responses:
+      201:
+        headers:
+          x-iflux-generated-id:
       403:
         description: If the user is not a member of the organization that owns the action target instance.
