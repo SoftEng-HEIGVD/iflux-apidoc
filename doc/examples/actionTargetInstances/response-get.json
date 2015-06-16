@@ -1,5 +1,6 @@
 {
   "id": 1,
+  "actionTargetInstanceId": "abdwetsds42d",
   "name": "my Slack Instance",
   "actionTargetTemplateId": 1,
   "configuration": {

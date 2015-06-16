@@ -1,5 +1,6 @@
 {
   "id": 1,
+  "eventSourceInstanceId": "jusw45mtdj2n",
   "name": "my Temperature Instance",
   "organizationId": 2,
   "eventSourceTemplateId": 1,
