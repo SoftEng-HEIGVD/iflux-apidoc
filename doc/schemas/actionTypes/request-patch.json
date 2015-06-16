@@ -11,6 +11,10 @@
       "description": "A human description of the action type.",
       "type": "string"
     },
+    "type": {
+      "description": "Valid URL to define the action type.",
+      "type": "url"
+    },
     "schema": {
       "description": "A valid JSON Schema.",
       "type": "json"

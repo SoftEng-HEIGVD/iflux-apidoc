@@ -1,6 +1,7 @@
 {
   "name": "slack/message",
   "description": "Send a message to slack.",
+  "type": "http://iflux.io/schemas/actionTypes/slackMessageSending",
   "actionTargetTemplateId": 1,
   "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",

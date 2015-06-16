@@ -7,18 +7,22 @@
       "description": "A name to identify the action type.",
       "type": "string"
     },
-    "actionTargetTemplateId": {
-      "description": "The action target template id to link with the action type",
-      "type": "integer"
-    },
     "description": {
       "description": "A human description of the action type.",
       "type": "string"
+    },
+    "type": {
+      "description": "Valid URL to define the action type.",
+      "type": "url"
+    },
+    "actionTargetTemplateId": {
+      "description": "The action target template id to link with the action type",
+      "type": "integer"
     },
     "schema": {
       "description": "A valid JSON Schema.",
       "type": "json"
     }
   },
-  "required": [ "name", "actionTargetTemplateId", "schema" ]
+  "required": [ "name", "type", "actionTargetTemplateId", "schema" ]
 }
