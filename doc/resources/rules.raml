@@ -23,6 +23,12 @@ get:
       required: true
       example: |
         `organizationId=1`
+    name:
+      type: string
+      required: false
+      description: Use this parameter to apply a filter on the name. Can be combined with other parameters.
+      example: |
+        `name=iFlu%`
   responses:
     403:
       description: If the user is not a member of the organization.
