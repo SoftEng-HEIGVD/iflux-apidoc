@@ -7,18 +7,18 @@
       "$schema": "http://json-schema.org/draft-04/schema#",
       "type": "object",
       "properties": {
-        "captorId": {
+        "sensorId": {
           "type": "string"
         }
       },
       "additionalProperties": false,
-      "required": [ "captorId" ]
+      "required": [ "sensorId" ]
     },
     "url": "http://some.cool.weather.service/configuration",
     "token": "<JSON Web Token>"
   },
   "configurationUi": {
-    "schemaForm": [ "captorId", {
+    "schemaForm": [ "sensorId", {
       "type": "submit",
       "style": "btn-primary",
       "title": "Submit"

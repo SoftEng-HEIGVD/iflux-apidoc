@@ -3,6 +3,6 @@
   "organizationId": 2,
   "eventSourceTemplateId": 1,
   "configuration": {
-    "captorId": "abcdef"
+    "sensorId": "abcdef"
   }
 }

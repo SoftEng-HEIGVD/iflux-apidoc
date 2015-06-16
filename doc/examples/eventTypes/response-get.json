@@ -1,14 +1,14 @@
 {
   "id": 1,
   "eventTypeId": "azausimemd",
-  "name": "ifluxTemperatureCaptor/increase",
+  "name": "ifluxTemperatureSensor/increase",
   "description": "Temperature increase",
   "eventSourceTemplateId": 1,
   "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "properties": {
-      "captorId": {
+      "sensorId": {
         "type": "string"
       },
       "temperature": {
