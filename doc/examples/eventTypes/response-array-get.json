@@ -1,10 +1,10 @@
 [
   {
     "id": 1,
-    "eventTypeId": "azausimemd",
     "name": "ifluxTemperatureSensor/increase",
-    "eventSourceTemplateId": 1,
     "description": "Temperature increase",
+    "type": "http://iflux.io/schemas/eventTypes/temperatureSensor",
+    "eventSourceTemplateId": 1,
     "schema": {
       "$schema": "http://json-schema.org/draft-04/schema#",
       "type": "object",
