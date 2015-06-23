@@ -77,6 +77,18 @@ post:
           * You have no access to the event source template
           * You cannot create an event source instance from an event source template in a different organization. In other words
             the organization ID is not the same as event source template organization ID.
+    500:
+      description: |
+        If a configuration is required, an attempt to configure the remote source is done. Therefore, this error is returned in case
+        the remote service is not available or an error is returned by the attempt to configure it.
+
+        **Remark**: At the moment, the event source is saved and there is no way to reconfigure the remote service.
+      body:
+        example: |
+          {
+            "message": "Unable to configure the remote event source."
+          }
+
 
 /{id}:
   is: [ auth ]
@@ -100,3 +112,14 @@ post:
           x-iflux-generated-id:
       403:
         description: If the user is not a member of the organization that owns the event source instance.
+      500:
+        description: |
+          If a configuration is required, an attempt to configure the remote source is done. Therefore, this error is returned in case
+          the remote service is not available or an error is returned by the attempt to configure it.
+
+          **Remark**: At the moment, the event source is updated and there is no way to reconfigure the remote service.
+        body:
+          example: |
+            {
+              "message": "Unable to configure the remote event source."
+            }

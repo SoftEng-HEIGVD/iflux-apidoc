@@ -77,6 +77,17 @@ post:
           * You have no access to the action target template
           * You cannot create an event action target from an action target template in a different organization. In other words
             the organization ID is not the same as action target template organization ID.
+    500:
+      description: |
+        If a configuration is required, an attempt to configure the remote target is done. Therefore, this error is returned in case
+        the remote service is not available or an error is returned by the attempt to configure it.
+
+        **Remark**: At the moment, the action target is saved and there is no way to reconfigure the remote service.
+      body:
+        example: |
+          {
+            "message": "Unable to configure the remote action target."
+          }
 
 /{id}:
   is: [ auth ]
@@ -100,3 +111,14 @@ post:
           x-iflux-generated-id:
       403:
         description: If the user is not a member of the organization that owns the action target instance.
+      500:
+        description: |
+          If a configuration is required, an attempt to configure the remote target is done. Therefore, this error is returned in case
+          the remote service is not available or an error is returned by the attempt to configure it.
+
+          **Remark**: At the moment, the action target is updated and there is no way to reconfigure the remote service.
+        body:
+          example: |
+            {
+              "message": "Unable to configure the remote action target."
+            }
