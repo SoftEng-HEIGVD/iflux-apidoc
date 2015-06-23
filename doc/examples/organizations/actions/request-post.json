@@ -2,3 +2,10 @@
   "type": "addUser",
   "email": "henri.dupont@localhost.localdomain"
 }
+
+or
+
+{
+  "type": "addUser",
+  "userId": 1
+}

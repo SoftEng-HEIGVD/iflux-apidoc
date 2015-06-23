@@ -6,7 +6,7 @@
   "oneOf": [ {
     "description": "Action: Add user to an organization",
     "type": "object",
-    "required": [ "type", "userId" ],
+    "required": [ "type" ],
     "properties": {
       "type": {
         "description": "addUser action type",
@@ -18,12 +18,16 @@
       "email": {
         "description": "The email address to add the user",
         "type": "string"
+      },
+      "userId": {
+        "description": "The user id",
+        "type": "integer"
       }
     }
   }, {
     "description": "Action: Remove user from an organization",
     "type": "object",
-    "required": [ "type", "userId" ],
+    "required": [ "type" ],
     "properties": {
       "type": {
         "description": "removeUser action type",
@@ -35,8 +39,11 @@
       "email": {
         "description": "The email address to remove the user",
         "type": "string"
+      },
+      "userId": {
+        "description": "The user id",
+        "type": "integer"
       }
     }
-  }],
-  "required": [ "name" ]
+  }]
 }
