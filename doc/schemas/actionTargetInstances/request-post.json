@@ -11,6 +11,10 @@
       "description": "The action target template to instantiate.",
       "type": "integer"
     },
+    "organizationId": {
+      "description": "The organization.",
+      "type": "integer"
+    },
     "description": {
       "description": "A human description of the action target instance.",
       "type": "string"

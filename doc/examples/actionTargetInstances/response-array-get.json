@@ -4,6 +4,7 @@
     "actionTargetInstanceId": "abdwetsds42d",
     "name": "my Slack Instance",
     "actionTargetTemplateId": 1,
+    "organizationId": 2,
     "configuration": {
       "botId": "jgajdsjgiqd"
     }
