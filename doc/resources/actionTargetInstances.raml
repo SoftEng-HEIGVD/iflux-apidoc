@@ -122,3 +122,17 @@ post:
             {
               "message": "Unable to configure the remote action target."
             }
+
+  /configure:
+    is: [ auth ]
+    post:
+      securedBy: [ jwt: { type: 'owner' }, test ]
+      description: |
+        Reconfigure the remote action target
+      responses:
+        200:
+          description: Configured done sucessfully.
+        404:
+          description: The action target has no configuration.
+        500:
+          description: Remote action target returned an error during configuration.

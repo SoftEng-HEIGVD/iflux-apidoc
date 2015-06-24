@@ -123,3 +123,17 @@ post:
             {
               "message": "Unable to configure the remote event source."
             }
+
+  /configure:
+    is: [ auth ]
+    post:
+      securedBy: [ jwt: { type: 'owner' }, test ]
+      description: |
+        Reconfigure the remote event source.
+      responses:
+        200:
+          description: Configured done sucessfully.
+        404:
+          description: The event source has no configuration.
+        500:
+          description: Remote event source returned an error during configuration.
