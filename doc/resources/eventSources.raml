@@ -1,15 +1,15 @@
 is: [ auth ]
 type:
   collection:
-    humanName: event source instance
-    schemaBaseName: eventSourceInstance
-    exampleGetResponse: !include ../examples/eventSourceInstances/response-array-get.json
-    examplePostRequest: !include ../examples/eventSourceInstances/request-post.json
-    examplePostError: !include ../examples/eventSourceInstances/response-post-error.json
+    humanName: event source
+    schemaBaseName: eventSource
+    exampleGetResponse: !include ../examples/eventSources/response-array-get.json
+    examplePostRequest: !include ../examples/eventSources/request-post.json
+    examplePostError: !include ../examples/eventSources/response-post-error.json
 get:
   securedBy: [ jwt: { type: 'owner' }, test ]
   description: |
-    You can retrieve the event source instances through:
+    You can retrieve the event sources through:
       * Event source template given through `eventSourceTemplateId`
       * Organization given through `organizationId`
       * All organizations throuhg `allOrganizations`
@@ -19,24 +19,24 @@ get:
   queryParameters:
     eventSourceTemplateId:
       description: |
-        Filter the event source instance by event source template.
+        Filter the event sources by event source template.
 
-        The user **MUST** be a member of the organization where the event source instance is configured.
+        The user **MUST** be a member of the organization where the event source is configured.
       type: integer
       required: true
       example: |
         `eventSourceTemplateId=1`
     organizationId:
       description: |
-        Filter the event source instance by organization.
+        Filter the event sources by organization.
 
-        The user **MUST** be a member of the organization where the event source instance is configured.
+        The user **MUST** be a member of the organization where the event source is configured.
       type: integer
       required: true
       example: |
         `organizationId=1`
     allOrganizations:
-      description: Filter the event source instances to retrieve all of them accross all the organizations where the user is member of.
+      description: Filter the event sources to retrieve all of them accross all the organizations where the user is member of.
       type: integer
       required: false
       example: |
@@ -49,11 +49,11 @@ get:
         `name=iFlu%`
   responses:
     200:
-      description: List of event types or empty list `[]`.
+      description: List of event sources or empty list `[]`.
     422:
       description: If the `eventSourceTemplateId`, `organizationId` or `allOrganizations` is not provided.
     403:
-      description: If the user is not a member of the organization that owns the event source instance.
+      description: If the user is not a member of the organization that owns the event source.
 post:
   securedBy: [ jwt: { type: 'owner' }, test ]
   responses:
@@ -61,7 +61,7 @@ post:
       headers:
         x-iflux-generated-id:
     403:
-      description: If the user is not a member of the organization that owns the event source instance.
+      description: If the user is not a member of the organization that owns the event source.
     422:
       description: |
         Validation errors.
@@ -75,35 +75,32 @@ post:
         * `{ "eventSourceTemplateId": [ "No event source template found." ] }` when:
           * No event source template found from the ID given
           * You have no access to the event source template
-          * You cannot create an event source instance from an event source template in a different organization. In other words
+          * You cannot create an event source from an event source template in a different organization. In other words
             the organization ID is not the same as event source template organization ID.
     500:
       description: |
         If a configuration is required, an attempt to configure the remote source is done. Therefore, this error is returned in case
         the remote service is not available or an error is returned by the attempt to configure it.
-
-        **Remark**: At the moment, the event source is saved and there is no way to reconfigure the remote service.
       body:
         example: |
           {
             "message": "Unable to configure the remote event source."
           }
 
-
 /{id}:
   is: [ auth ]
   type:
     member:
-      humanName: event source instances
-      schemaBaseName: eventSourceInstance
-      exampleGetResponse: !include ../examples/eventSourceInstances/response-get.json
-      examplePatchRequest: !include ../examples/eventSourceInstances/request-patch.json
-      examplePatchError: !include ../examples/eventSourceInstances/response-patch-error.json
+      humanName: event sources
+      schemaBaseName: eventSource
+      exampleGetResponse: !include ../examples/eventSources/response-get.json
+      examplePatchRequest: !include ../examples/eventSources/request-patch.json
+      examplePatchError: !include ../examples/eventSources/response-patch-error.json
   get:
     securedBy: [ jwt: { type: 'owner' }, test ]
     responses:
       403:
-        description: If the user is not a member of the organization that owns the event source instance.
+        description: If the user is not a member of the organization that owns the event source.
   patch:
     securedBy: [ jwt: { type: 'owner' }, test ]
     responses:
@@ -111,7 +108,7 @@ post:
         headers:
           x-iflux-generated-id:
       403:
-        description: If the user is not a member of the organization that owns the event source instance.
+        description: If the user is not a member of the organization that owns the event source.
       500:
         description: |
           If a configuration is required, an attempt to configure the remote source is done. Therefore, this error is returned in case

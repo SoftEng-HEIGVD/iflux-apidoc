@@ -4,7 +4,7 @@
   "organizationId": 1,
   "conditions": [{
     "description": "Match if a temperature has changed for a certain sensor and a temperature event",
-    "eventSourceInstanceId": 1,
+    "eventSourceId": 1,
     "eventTypeId": 1,
     "fn": {
       "expression": "return event.temperature.old != event.temperature.new;",
@@ -29,7 +29,7 @@
     }
   }, {
     "description": "Match if a temperature has changed for a specific sensor and any event from this sensor",
-    "eventSourceInstanceId": 1,
+    "eventSourceId": 1,
     "fn": {
       "expression": "return event.sensorId == 42 || event.sensorId == 53;",
       "sampleEvent": {
@@ -39,7 +39,7 @@
   }],
   "transformations": [{
     "description": "Transform the event of the specific type for the slack action target with the specific action type.",
-    "actionTargetInstanceId": 1,
+    "eventSourceId": 1,
     "eventTypeId": 1,
     "actionTypeId": 1,
     "fn": {
@@ -56,7 +56,7 @@
     }
   }, {
     "description": "Transform the event for the slack action target with the specific action type.",
-    "actionTargetInstanceId": 1,
+    "actionTargetId": 1,
     "actionTypeId": 1,
     "fn": {
       "expression": "return { message: 'The sensor ' + event.sensorId + ' has sent an event of ' + eventType.name + '.' };",

@@ -12,7 +12,7 @@
       "type": "boolean"
     },
     "configuration": {
-      "description": "Providing a schema aims to help the WUI to configure the instances.",
+      "description": "Providing a schema aims to help the WUI for configuration.",
       "type": "object",
       "properties": {
         "schema": {

@@ -19,15 +19,15 @@
       "description": "List of condition to evaluate against events received.",
       "type": "array",
       "items": {
-        "description": "Condition to evaluate, **MUST** define at least one of the three condition criteria: `eventSourceInstanceId`, `eventTypeId` or `fn`.",
+        "description": "Condition to evaluate, **MUST** define at least one of the three condition criteria: `eventSourceId`, `eventTypeId` or `fn`.",
         "type": "object",
         "properties": {
           "description": {
             "description": "Human friendly text to let the possibility to explain what the condition evaluates.",
             "type": "string"
           },
-          "eventSourceInstanceId": {
-            "description": "The event source instance to match on event received. If not present, joker `*` will be used.",
+          "eventSourceId": {
+            "description": "The event source to match on event received. If not present, joker `*` will be used.",
             "type": "integer"
           },
           "eventTypeId": {
@@ -64,8 +64,8 @@
             "description": "Human friendly text to let the possibility to explain what the transformation does.",
             "type": "string"
           },
-          "actionTargetInstanceId": {
-            "description": "The action instance to send the event transformed.",
+          "actionTargetId": {
+            "description": "The action target to send the event transformed.",
             "type": "integer"
           },
           "actionTypeId": {
@@ -107,7 +107,7 @@
             "required": [ "expression", "sample" ]
           }
         },
-        "required": [ "actionTargetInstanceId", "actionTypeId" ]
+        "required": [ "actionTargetId", "actionTypeId" ]
       },
       "minItems": 1
     }

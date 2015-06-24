@@ -6,7 +6,7 @@
     "public": true,
     "organizationId": 1,
     "target": {
-      "url": "http://slackgateway.bot.instance/actions",
+      "url": "http://slackgateway.bot.channel/actions",
       "token": "<JSON Web Token>"
     }
   }

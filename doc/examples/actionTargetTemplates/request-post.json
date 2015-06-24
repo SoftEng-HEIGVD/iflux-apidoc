@@ -14,7 +14,7 @@
       "additionalProperties": false,
       "required": [ "botId" ]
     },
-    "url": "http://slackgateway.bot.instance/configuration",
+    "url": "http://slackgateway.bot.channel/configuration",
     "token": "<JSON Web Token>"
   },
   "configurationUi": {
@@ -25,7 +25,7 @@
     } ]
   },
   "target": {
-    "url": "http://slackgateway.bot.instance/actions",
+    "url": "http://slackgateway.bot.channel/actions",
     "token": "<JSON Web Token>"
   }
 }

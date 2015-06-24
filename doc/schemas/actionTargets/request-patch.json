@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Action target instance",
+  "title": "Action target",
   "type": "object",
   "properties": {
     "name": {
-      "description": "A name to identify the action target instance.",
+      "description": "A name to identify the action target.",
       "type": "string"
     },
     "configuration": {

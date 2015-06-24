@@ -23,19 +23,19 @@
       "description": "List of condition to evaluate against events received.",
       "type": "array",
       "items": {
-        "description": "Condition to evaluate, **MUST** define at least one of the three condition criteria: `eventSourceInstanceId`, `eventTypeId` or `fn`.",
+        "description": "Condition to evaluate, **MUST** define at least one of the three condition criteria: `eventSourceId`, `eventTypeId` or `fn`.",
         "type": "object",
         "properties": {
           "description": {
             "description": "Human friendly text to let the possibility to explain what the condition evaluates.",
             "type": "string"
           },
-          "eventSourceInstanceId": {
-            "description": "The event source instance to match on event received. If not present, joker `*` will be used.",
+          "eventSourceId": {
+            "description": "The event source to match on event received. If not present, joker `*` will be used.",
             "type": "integer"
           },
-          "eventSourceInstanceKey": {
-            "description": "Unique identifier of the event source instance usable in the events.",
+          "eventSourceKey": {
+            "description": "Unique identifier of the event source usable in the events.",
             "type": "string"
           },
           "eventTypeId": {
@@ -76,12 +76,12 @@
             "description": "Human friendly text to let the possibility to explain what the transformation does.",
             "type": "string"
           },
-          "actionTargetInstanceId": {
-            "description": "The action instance to send the event transformed.",
+          "actionTargetId": {
+            "description": "The action target to send the event transformed.",
             "type": "integer"
           },
-          "actionTargetInstanceKey": {
-            "description": "Unique identifier of the action target instance sent with actions.",
+          "actionTargetKey": {
+            "description": "Unique identifier of the action target sent with actions.",
             "type": "string"
           },
           "actionTypeId": {
@@ -131,7 +131,7 @@
             "required": [ "expression", "sample" ]
           }
         },
-        "required": [ "actionTargetInstanceId", "actionTargetInstanceKey", "actionTypeId", "actionTypeKey" ]
+        "required": [ "actionTargetId", "actionTargetKey", "actionTypeId", "actionTypeKey" ]
       },
       "minItems": 1
     }

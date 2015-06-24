@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Event source instance",
+  "title": "Event source",
   "type": "object",
   "properties": {
     "name": {
-      "description": "A name to identify the event source instance.",
+      "description": "A name to identify the event source.",
       "type": "string"
     },
     "configuration": {

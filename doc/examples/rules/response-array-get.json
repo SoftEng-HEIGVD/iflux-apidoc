@@ -5,8 +5,8 @@
     "organizationId": 1,
     "conditions": [{
       "description": "Match if a temperature has changed for a certain sensor and a temperature event",
-      "eventSourceInstanceId": 1,
-      "eventSourceInstanceKey": "y19sfhryucxd",
+      "eventSourceId": 1,
+      "eventSourceKey": "y19sfhryucxd",
       "eventTypeId": 1,
       "eventTypeKey": "peitjriu7tjr",
       "fn": {
@@ -33,8 +33,8 @@
       }
     }, {
       "description": "Match if a temperature has changed for a specific sensor and any event from this sensor",
-      "eventSourceInstanceId": 1,
-      "eventSourceInstanceKey": "y19sfhryucxd",
+      "eventSourceId": 1,
+      "eventSourceKey": "y19sfhryucxd",
       "fn": {
         "expression": "return event.sensorId == 42 || event.sensorId == 53;",
         "sampleEvent": {
@@ -44,8 +44,8 @@
     }],
     "transformations": [{
       "description": "Transform the event of the specific type for the slack action target with the specific action type.",
-      "actionTargetInstanceId": 1,
-      "actionTargetInstanceKey": "vv4n7sq4e39b",
+      "actionTargetId": 1,
+      "actionTargetKey": "vv4n7sq4e39b",
       "eventTypeId": 1,
       "eventTypeKey": "peitjriu7tjr",
       "actionTypeId": 1,
@@ -64,8 +64,8 @@
       }
     }, {
       "description": "Transform the event for the slack action target with the specific action type.",
-      "actionTargetInstanceId": 1,
-      "actionTargetInstanceKey": "vv4n7sq4e39b",
+      "actionTargetId": 1,
+      "actionTargetKey": "vv4n7sq4e39b",
       "actionTypeId": 1,
       "actionTypeKey": "lxrg2hgx8po9",
       "fn": {

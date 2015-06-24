@@ -1,5 +1,5 @@
 {
-  "name": "my Temperature Instance",
+  "name": "my Temperature",
   "organizationId": 2,
   "eventSourceTemplateId": 1,
   "configuration": {

@@ -1,16 +1,16 @@
 is: [ auth ]
 type:
   collection:
-    humanName: action target instance
-    schemaBaseName: actionTargetInstance
-    exampleGetResponse: !include ../examples/actionTargetInstances/response-array-get.json
-    examplePostRequest: !include ../examples/actionTargetInstances/request-post.json
-    examplePostError: !include ../examples/actionTargetInstances/response-post-error.json
+    humanName: action target
+    schemaBaseName: actionTarget
+    exampleGetResponse: !include ../examples/actionTargets/response-array-get.json
+    examplePostRequest: !include ../examples/actionTargets/request-post.json
+    examplePostError: !include ../examples/actionTargets/response-post-error.json
 get:
   securedBy: [ jwt: { type: 'owner' }, test ]
   description: |
-    You can retrieve the action target instances through:
-      * Event source template given through `actionTargetTemplateId`
+    You can retrieve the action targets through:
+      * Action target template given through `actionTargetTemplateId`
       * Organization given through `organizationId`
       * All organizations throuhg `allOrganizations`
 
@@ -19,24 +19,24 @@ get:
   queryParameters:
     actionTargetTemplateId:
       description: |
-        Filter the action target instance by action target template.
+        Filter the action targets by action target template.
 
-        The user **MUST** be a member of the organization where the action target instance is configured.
+        The user **MUST** be a member of the organization where the action target is configured.
       type: integer
       required: true
       example: |
         `actionTargetTemplateId=1`
     organizationId:
       description: |
-        Filter the action target instance by organization.
+        Filter the action targets by organization.
 
-        The user **MUST** be a member of the organization where the action target instance is configured.
+        The user **MUST** be a member of the organization where the action target is configured.
       type: integer
       required: true
       example: |
         `organizationId=1`
     allOrganizations:
-      description: Filter the action target instances to retrieve all of them accross all the organizations where the user is member of.
+      description: Filter the action targets to retrieve all of them accross all the organizations where the user is member of.
       type: integer
       required: false
       example: |
@@ -49,11 +49,11 @@ get:
         `name=iFlu%`
   responses:
     200:
-      description: List of event types or empty list `[]`.
+      description: List of action targets or empty list `[]`.
     422:
       description: If the `actionTargetTemplateId`, `organizationId` or `allOrganizations` is not provided.
     403:
-      description: If the user is not a member of the organization that owns the action target instance.
+      description: If the user is not a member of the organization that owns the action target.
 post:
   securedBy: [ jwt: { type: 'owner' }, test ]
   responses:
@@ -61,7 +61,7 @@ post:
       headers:
         x-iflux-generated-id:
     403:
-      description: If the user is not a member of the organization that owns the action target instance.
+      description: If the user is not a member of the organization that owns the action target.
     422:
       description: |
         Validation errors.
@@ -81,8 +81,6 @@ post:
       description: |
         If a configuration is required, an attempt to configure the remote target is done. Therefore, this error is returned in case
         the remote service is not available or an error is returned by the attempt to configure it.
-
-        **Remark**: At the moment, the action target is saved and there is no way to reconfigure the remote service.
       body:
         example: |
           {
@@ -93,16 +91,16 @@ post:
   is: [ auth ]
   type:
     member:
-      humanName: action target instances
-      schemaBaseName: actionTargetInstance
-      exampleGetResponse: !include ../examples/actionTargetInstances/response-get.json
-      examplePatchRequest: !include ../examples/actionTargetInstances/request-patch.json
-      examplePatchError: !include ../examples/actionTargetInstances/response-patch-error.json
+      humanName: action targets
+      schemaBaseName: actionTarget
+      exampleGetResponse: !include ../examples/actionTargets/response-get.json
+      examplePatchRequest: !include ../examples/actionTargets/request-patch.json
+      examplePatchError: !include ../examples/actionTargets/response-patch-error.json
   get:
     securedBy: [ jwt: { type: 'owner' }, test ]
     responses:
       403:
-        description: If the user is not a member of the organization that owns the action target instance.
+        description: If the user is not a member of the organization that owns the action target.
   patch:
     securedBy: [ jwt: { type: 'owner' }, test ]
     responses:
@@ -110,7 +108,7 @@ post:
         headers:
           x-iflux-generated-id:
       403:
-        description: If the user is not a member of the organization that owns the action target instance.
+        description: If the user is not a member of the organization that owns the action target.
       500:
         description: |
           If a configuration is required, an attempt to configure the remote target is done. Therefore, this error is returned in case

@@ -39,10 +39,10 @@ schemas:
   - auth-signin-post-res: !include doc/schemas/auth/response-signin-post.json
   - auth-register-post-req: !include doc/schemas/auth/request-register-post.json
   - errors: !include doc/schemas/errors.json
-  - actionTargetInstance-get: !include doc/schemas/actionTargetInstances/response-get.json
-  - actionTargetInstance-patch: !include doc/schemas/actionTargetInstances/request-patch.json
-  - actionTargetInstance-post: !include doc/schemas/actionTargetInstances/request-post.json
-  - actionTargetInstance-getAll: !include doc/schemas/actionTargetInstances/response-array-get.json
+  - actionTarget-get: !include doc/schemas/actionTargets/response-get.json
+  - actionTarget-patch: !include doc/schemas/actionTargets/request-patch.json
+  - actionTarget-post: !include doc/schemas/actionTargets/request-post.json
+  - actionTarget-getAll: !include doc/schemas/actionTargets/response-array-get.json
   - actionTargetTemplate-get: !include doc/schemas/actionTargetTemplates/response-get.json
   - actionTargetTemplate-patch: !include doc/schemas/actionTargetTemplates/request-patch.json
   - actionTargetTemplate-post: !include doc/schemas/actionTargetTemplates/request-post.json
@@ -51,10 +51,10 @@ schemas:
   - actionType-patch: !include doc/schemas/actionTypes/request-patch.json
   - actionType-post: !include doc/schemas/actionTypes/request-post.json
   - actionType-getAll: !include doc/schemas/actionTypes/response-array-get.json
-  - eventSourceInstance-get: !include doc/schemas/eventSourceInstances/response-get.json
-  - eventSourceInstance-patch: !include doc/schemas/eventSourceInstances/request-patch.json
-  - eventSourceInstance-post: !include doc/schemas/eventSourceInstances/request-post.json
-  - eventSourceInstance-getAll: !include doc/schemas/eventSourceInstances/response-array-get.json
+  - eventSource-get: !include doc/schemas/eventSources/response-get.json
+  - eventSource-patch: !include doc/schemas/eventSources/request-patch.json
+  - eventSource-post: !include doc/schemas/eventSources/request-post.json
+  - eventSource-getAll: !include doc/schemas/eventSources/response-array-get.json
   - eventSourceTemplate-get: !include doc/schemas/eventSourceTemplates/response-get.json
   - eventSourceTemplate-patch: !include doc/schemas/eventSourceTemplates/request-patch.json
   - eventSourceTemplate-post: !include doc/schemas/eventSourceTemplates/request-post.json
@@ -81,11 +81,11 @@ traits:
   - auth: !include doc/traits/authentication.raml
 
 /auth: !include doc/resources/auth.raml
-/actionTargetInstances: !include doc/resources/actionTargetInstances.raml
+/actionTargets: !include doc/resources/actionTargets.raml
 /actionTargetTemplates: !include doc/resources/actionTargetTemplates.raml
 /actionTypes: !include doc/resources/actionTypes.raml
 /events: !include doc/resources/events.raml
-/eventSourceInstances: !include doc/resources/eventSourceInstances.raml
+/eventSources: !include doc/resources/eventSources.raml
 /eventSourceTemplates: !include doc/resources/eventSourceTemplates.raml
 /eventTypes: !include doc/resources/eventTypes.raml
 /me: !include doc/resources/me.raml

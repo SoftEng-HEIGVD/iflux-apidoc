@@ -1,7 +1,7 @@
 {
   "id": 1,
-  "eventSourceInstanceId": "jusw45mtdj2n",
-  "name": "my Temperature Instance",
+  "eventSourceId": "jusw45mtdj2n",
+  "name": "my Temperature",
   "organizationId": 2,
   "eventSourceTemplateId": 1,
   "configuration": {
