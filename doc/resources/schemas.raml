@@ -1,0 +1,36 @@
+/actionTypes/{remainingUrl}:
+  is: [ auth ]
+  uriParameters:
+    remainingUrl:
+      description: The remaining path of the action type.
+      type: string
+      example: slack/message
+  get:
+    securedBy: [ jwt: { type: 'owner' } ]
+    description: Retrieve an action type schema.
+    responses:
+      200:
+        description: The schema found.
+        body:
+          example: !include ../examples/schemas/actionType.json
+      404:
+        description: If not found or no schema present.
+
+/eventTypes/{remainingUrl}:
+  is: [ auth ]
+  uriParameters:
+    remainingUrl:
+      description: The remaining path of the event type.
+      type: string
+      example: temperature/increase
+  get:
+    securedBy: [ jwt: { type: 'owner' } ]
+    description: Retrieve an event type schema.
+    responses:
+      200:
+        description: The schema found.
+        body:
+          example: !include ../examples/schemas/eventType.json
+      404:
+        description: If not found or no schema present.
+
