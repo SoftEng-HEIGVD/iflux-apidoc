@@ -9,18 +9,28 @@ type:
 get:
   securedBy: [ jwt: { type: 'owner' }, test ]
   description: |
-    You cannot retrieve all the event types accross all the event source templates. You **MUST** provide
-    the `eventSourceTemplateId` to get all the event types from it.
-  queryParameters:
-    eventSourceTemplateId:
-      description: |
-        Filter the event type by event source template.
+    By default, retrieve all the public event types that a user can visualize.
 
-        The user **MUST** be a member of the organization where the event source template is defined.
+    - If an `organizationId` is provided, then all the event types of the organization are
+    retrieved. The user must be a member of the organization, otherwise, he will get a `403`.
+
+    - If `allOrganizations` is used, therfore, all the event types for all the organizations where the user
+    is member are retrived.
+
+    - If `organizationId` and `allOrganizations` are specified together, then only `organizationId` take effect.
+  queryParameters:
+    organizationId:
+      description: Filter the event types by organization. The user **MUST** be member of the organization.
       type: integer
-      required: true
+      required: false
       example: |
-        `eventSourceTemplateId=1`
+        `organizationId=1`
+    allOrganizations:
+      description: Filter the event types to retrieve all of them accross all the organizations where the user is member of.
+      type: integer
+      required: false
+      example: |
+        `allOrganizations` or `allOrganizations=true`
     name:
       type: string
       required: false
@@ -28,12 +38,8 @@ get:
       example: |
         `name=iFlu%`
   responses:
-    200:
-      description: List of event types or empty list `[]`.
-    422:
-      description: If the `eventSourceTemplateId` is not provided.
     403:
-      description: If the user is not a member of the organization that owns the event source template or not found.
+      description: If the user is not a member of the organization.
 post:
   securedBy: [ jwt: { type: 'owner' }, test ]
   responses:

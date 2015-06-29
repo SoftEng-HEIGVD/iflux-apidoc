@@ -15,12 +15,16 @@
       "description": "A human description of the event type.",
       "type": "string"
     },
+    "public": {
+      "description": "Make the event type available to everybody.",
+      "type": "boolean"
+    },
     "type": {
       "description": "Valid URL to define the event type.",
       "type": "url"
     },
-    "eventSourceTemplateId": {
-      "description": "The event source template id to link with the event type",
+    "organizationId": {
+      "description": "Link to the organization",
       "type": "integer"
     },
     "schema": {
@@ -28,5 +32,5 @@
       "type": "json"
     }
   },
-  "required": [ "id", "name", "type", "eventSourceTemplateId", "schema" ]
+  "required": [ "id", "name", "public", "type", "organizationId", "schema" ]
 }

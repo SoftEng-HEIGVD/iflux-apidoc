@@ -11,6 +11,10 @@
       "description": "A human description of the action type.",
       "type": "string"
     },
+    "public": {
+      "description": "Make the action type available to everybody.",
+      "type": "boolean"
+    },
     "type": {
       "description": "Valid URL to define the action type.",
       "type": "url"

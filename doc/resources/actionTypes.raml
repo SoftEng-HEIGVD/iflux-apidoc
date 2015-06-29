@@ -9,18 +9,28 @@ type:
 get:
   securedBy: [ jwt: { type: 'owner' }, test ]
   description: |
-    You cannot retrieve all the action types accross all the action target templates. You **MUST** provide
-    the `actionTargetTemplateId` to get all the action types from it.
-  queryParameters:
-    actionTargetTemplateId:
-      description: |
-        Filter the action type by action target template.
+    By default, retrieve all the public action types that a user can visualize.
 
-        The user **MUST** be a member of the organization where the action target template is defined.
+    - If an `organizationId` is provided, then all the action types of the organization are
+    retrieved. The user must be a member of the organization, otherwise, he will get a `403`.
+
+    - If `allOrganizations` is used, therfore, all the action types for all the organizations where the user
+    is member are retrived.
+
+    - If `organizationId` and `allOrganizations` are specified together, then only `organizationId` take effect.
+  queryParameters:
+    organizationId:
+      description: Filter the action types by organization. The user **MUST** be member of the organization.
       type: integer
-      required: true
+      required: false
       example: |
-        `actionTargetTemplateId=1`
+        `organizationId=1`
+    allOrganizations:
+      description: Filter the action types to retrieve all of them accross all the organizations where the user is member of.
+      type: integer
+      required: false
+      example: |
+        `allOrganizations` or `allOrganizations=true`
     name:
       type: string
       required: false
@@ -28,12 +38,8 @@ get:
       example: |
         `name=iFlu%`
   responses:
-    200:
-      description: List of action types or empty list `[]`.
-    422:
-      description: If the `actionTargetTemplateId` is not provided.
     403:
-      description: If the user is not a member of the organization that owns the action target template.
+      description: If the user is not a member of the organization.
 post:
   securedBy: [ jwt: { type: 'owner' }, test ]
   responses:
@@ -41,7 +47,7 @@ post:
       headers:
         x-iflux-generated-id:
     403:
-      description: If the user is not a member of the organization that owns the action target template.
+      description: If the user is not a member of the organization.
 
 /{id}:
   is: [ auth ]

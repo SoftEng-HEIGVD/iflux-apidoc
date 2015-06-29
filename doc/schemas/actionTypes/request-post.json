@@ -11,12 +11,16 @@
       "description": "A human description of the action type.",
       "type": "string"
     },
+    "public": {
+      "description": "Make the action type available to everybody.",
+      "type": "boolean"
+    },
     "type": {
       "description": "Valid URL to define the action type.",
       "type": "url"
     },
-    "actionTargetTemplateId": {
-      "description": "The action target template id to link with the action type",
+    "organizationId": {
+      "description": "Link to the organization",
       "type": "integer"
     },
     "schema": {
@@ -24,5 +28,5 @@
       "type": "json"
     }
   },
-  "required": [ "name", "type", "actionTargetTemplateId", "schema" ]
+  "required": [ "name", "type", "organizationId", "schema" ]
 }

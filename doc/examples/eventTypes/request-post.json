@@ -1,8 +1,9 @@
 {
   "name": "ifluxTemperatureSensor/increase",
   "description": "Temperature increase",
+  "public": true,
   "type": "http://iflux.io/schemas/eventTypes/temperatureSensor",
-  "eventSourceTemplateId": 1,
+  "organizationId": 1,
   "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
