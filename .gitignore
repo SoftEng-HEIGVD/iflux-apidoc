@@ -2,3 +2,4 @@ build
 node_modules
 raml.json
 npm-debug.log
+.env

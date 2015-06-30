@@ -1,10 +1,16 @@
-var pkg = require('./package');
+var
+	pkg = require('./package'),
+	dotenv = require('dotenv'),
+	env = process.env.NODE_ENV || 'development';
+
+if (process.env.NODE_ENV != 'docker') {
+	dotenv.load();
+}
 
 module.exports = function (grunt) {
 	var devMode = (grunt.option('devMode'));
 	var schemaIndentBordered = (grunt.option('schemaIndentBordered'));
 	var host = (grunt.option('host') || '127.0.0.1');
-
 
 	// configure the tasks
 	var config = {
@@ -24,10 +30,21 @@ module.exports = function (grunt) {
       }
     },
 
+		replace: {
+		  build: {
+		    src: ['build/index.html'],
+		    overwrite: true,
+		    replacements: [{
+		      from: /\$\{apiUrl\}/g,
+		      to: process.env.COMMON_IFLUX_API_URL
+		    }]
+		  }
+		},
+
 		watch: {
 			documentation: {
-				files: [ 'doc/**/*' ],
-				tasks: [ 'raml2boot:apidoc' ],
+				files: [ 'doc/**/*', '.env' ],
+				tasks: [ 'raml2boot:apidoc', 'replace:build' ],
 				options: {
 					livereload: true
 				}
@@ -63,11 +80,12 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-http-server');
 	grunt.loadNpmTasks('grunt-raml2boot');
+	grunt.loadNpmTasks('grunt-text-replace');
 
 	grunt.registerTask(
 		'build',
 		'Compiles everything.',
-		[ 'clean:build', 'raml2boot:apidoc' ]
+		[ 'clean:build', 'raml2boot:apidoc', 'replace:build' ]
 	);
 
 	grunt.registerTask(
