@@ -1,7 +1,7 @@
 {
   "name": [
     "The name must be at least 2 characters long",
-    "Name is already taken."
+    "Name is already taken in this organization."
   ],
   "configuration": {
     "url": [

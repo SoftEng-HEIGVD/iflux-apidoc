@@ -4,7 +4,7 @@
   "type": "object",
   "properties": {
     "name": {
-      "description": "A name to identify the action type.",
+      "description": "A name to identify the action type. **Remark**: The name is unique in the organization.",
       "type": "string"
     },
     "description": {

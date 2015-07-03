@@ -1,6 +1,7 @@
+// Single object
 {
   "timestamp" : "2015-01-12T05:21:07Z",
-  "sourceId": "abcdefghij",
+  "source": "abcdefghij",
   "type": "http://iflux.io/schemas/eventTypes/1",
   "properties": {
     "temperature" : 22.5,
@@ -8,12 +9,11 @@
   }
 }
 
-// or
-
+// or array of events
 [
   {
     "timestamp" : "2015-01-12T05:21:07Z",
-    "sourceId": "abcdefghij",
+    "source": "abcdefghij",
     "type": "http://iflux.io/schemas/eventTypes/1",
     "properties": {
       "temperature" : 22.5,

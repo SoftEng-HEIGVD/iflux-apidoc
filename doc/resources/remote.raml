@@ -1,0 +1,46 @@
+description: The remote API is not implemented on iFLUX itself.
+
+/<actionTargetImplem>:
+  description: Implementation of an action target must offer at least the /actions API.
+  /actions:
+    post:
+      description: |
+        This resource **MUST** be implemented by the action target. They have to comply to the following spec.
+      body:
+        application/json:
+          example: !include ../examples/remote/post-actions.json
+      responses:
+        204:
+          description: No content
+
+  /configure:
+    post:
+      description: |
+        This API should be implemented when an action target need to be configured for specific usage.
+
+        **Example**: Slack messages can be send to different channels in different accounts. Each account need
+        to be configured. Therefore, each account can be seen as an instance of an action target template where
+        the credentials are required.
+      body:
+        application/json:
+          example: !include ../examples/remote/post-actionTarget-configure.json
+      responses:
+        204:
+          description: No content
+
+/<eventSourceImplem>:
+  description: Implementation of an event source.
+  /configure:
+    post:
+      description: |
+        This API should be implemented when an event source need to be configured for specific usage.
+
+        **Example**: In a system with thermometers as sensors that are the event sources, each of them must be identified.
+        In this case, we should probably have an event source template that represents the thermometer and the instances
+        with an identifier configured.
+      body:
+        application/json:
+          example: !include ../examples/remote/post-eventSource-configure.json
+      responses:
+        204:
+          description: No content

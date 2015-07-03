@@ -4,7 +4,7 @@
   "type": "object",
   "properties": {
     "name": {
-      "description": "A name to identify the action target template",
+      "description": "A name to identify the action target template. **Remark**: Name is unique in the organization.",
       "type": "string"
     },
     "organizationId": {

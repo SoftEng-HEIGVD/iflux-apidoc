@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "actionTargetId": "abdwetsds42d",
+    "generatedIdentifier": "abdwetsds42d",
     "name": "my Slack Channel",
     "actionTargetTemplateId": 1,
     "organizationId": 2,

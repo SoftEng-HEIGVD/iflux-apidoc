@@ -1,80 +1,98 @@
 {
-   "name": "My temperature rule",
-   "active": true,
-   "organizationId": 1,
-   "conditions": [{
-     "description": "Match if a temperature has changed for a certain sensor and a temperature event",
-     "eventSourceId": 1,
-     "eventSourceKey": "y19sfhryucxd",
-     "eventTypeId": 1,
-     "eventTypeKey": "peitjriu7tjr",
-     "fn": {
-       "expression": "return event.temperature.old != event.temperature.new;",
-       "sampleEvent": {
-         "temperature": {
-           "old": 12,
-           "new": 13
-         }
-       }
-     }
-   }, {
-     "description": "Match if a temperature has changed for any sensor and a temperature event",
-     "eventTypeId": 1,
-     "eventTypeKey": "peitjriu7tjr",
-     "fn": {
-       "expression": "return event.temperature.old != event.temperature.new;",
-       "sampleEvent": {
-         "temperature": {
-           "old": 12,
-           "new": 13
-         }
-       }
-     }
-   }, {
-     "description": "Match if a temperature has changed for a specific sensor and any event from this sensor",
-     "eventSourceId": 1,
-     "eventSourceKey": "y19sfhryucxd",
-     "fn": {
-       "expression": "return event.sensorId == 42 || event.sensorId == 53;",
-       "sampleEvent": {
-         "sensorId": 42
-       }
-     }
-   }],
-   "transformations": [{
-     "description": "Transform the event of the specific type for the slack action target with the specific action type.",
-     "actionTargetId": 1,
-     "actionTargetKey": "vv4n7sq4e39b",
-     "eventTypeId": 1,
-     "eventTypeKey": "peitjriu7tjr",
-     "actionTypeId": 1,
-     "actionTypeKey": "lxrg2hgx8po9",
-     "fn": {
-       "expression": "return { message: 'The temp. changed from ' + event.temperature.old + ' to ' + event.temperature.new + '.' };",
-       "sample": {
-         "event": {
-           "temperature": {
-             "old": 12,
-             "new": 14
-           }
-         },
-         "eventSourceTemplateId": 1
-       }
-     }
-   }, {
-     "description": "Transform the event for the slack action target with the specific action type.",
-     "actionTargetId": 1,
-     "actionTargetKey": "vv4n7sq4e39b",
-     "actionTypeId": 1,
-     "actionTypeKey": "lxrg2hgx8po9",
-     "fn": {
-       "expression": "return { message: 'The sensor ' + event.sensorId + ' has sent an event of ' + eventType.name + '.' };",
-       "sample": {
-         "event": {
-           "sensorId": "theSensor"
-         },
-         "eventTypeId": 1
-       }
-     }
-   }]
- }
+  "name": "My temperature rule",
+  "active": true,
+  "organizationId": 1,
+  "conditions": [{
+    "description": "Match if a temperature has changed for a certain sensor and a temperature event",
+    "eventSource": {
+      "id": 1,
+      "generatedIdentifier": "y19sfhryucxd"
+    },
+    "eventType": {
+      "id": 1,
+      "type": "http://iflux.io/v1/schemas/eventTypes/1"
+    },
+    "fn": {
+      "expression": "return event.temperature.old != event.temperature.new;",
+      "sampleEvent": {
+        "temperature": {
+          "old": 12,
+          "new": 13
+        }
+      }
+    }
+  }, {
+    "description": "Match if a temperature has changed for any sensor and a temperature event",
+    "eventType": {
+      "id": 1,
+      "type": "http://iflux.io/v1/schemas/eventTypes/1"
+    },
+    "fn": {
+      "expression": "return event.temperature.old != event.temperature.new;",
+      "sampleEvent": {
+        "temperature": {
+          "old": 12,
+          "new": 13
+        }
+      }
+    }
+  }, {
+    "description": "Match if a temperature has changed for a specific sensor and any event from this sensor",
+    "eventSource": {
+      "id": 1,
+      "generatedIdentifier": "y19sfhryucxd"
+    },
+    "fn": {
+      "expression": "return event.sensorId == 42 || event.sensorId == 53;",
+      "sampleEvent": {
+        "sensorId": 42
+      }
+    }
+  }],
+  "transformations": [{
+    "description": "Transform the event of the specific type for the slack action target with the specific action type.",
+    "actionTarget": {
+      "id": 1,
+      "generatedIdentifier": "vv4n7sq4e39b"
+    },
+    "actionType": {
+      "id": 1,
+      "type": "http://iflux.io/v1/schemas/actionTypes/1"
+    },
+    "eventType": {
+      "id": 1,
+      "type": "http://iflux.io/v1/schemas/eventTypes/1"
+    },
+    "fn": {
+      "expression": "return { message: 'The temp. changed from ' + event.temperature.old + ' to ' + event.temperature.new + '.' };",
+      "sample": {
+        "event": {
+          "temperature": {
+            "old": 12,
+            "new": 14
+          }
+        },
+        "eventSourceTemplateId": 1
+      }
+    }
+  }, {
+    "description": "Transform the event for the slack action target with the specific action type.",
+    "actionTarget": {
+      "id": 1,
+      "generatedIdentifier": "vv4n7sq4e39b"
+    },
+    "actionType": {
+      "id": 1,
+      "type": "http://iflux.io/v1/schemas/actionTypes/1"
+    },
+    "fn": {
+      "expression": "return { message: 'The sensor ' + event.sensorId + ' has sent an event of ' + eventType.name + '.' };",
+      "sample": {
+        "event": {
+          "sensorId": "theSensor"
+        },
+        "eventTypeId": 1
+      }
+    }
+  }]
+}

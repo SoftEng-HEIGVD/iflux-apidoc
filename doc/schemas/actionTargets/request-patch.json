@@ -4,7 +4,7 @@
   "type": "object",
   "properties": {
     "name": {
-      "description": "A name to identify the action target.",
+      "description": "A name to identify the action target. **Remark**: The name is unique against the action target template and organization.",
       "type": "string"
     },
     "configuration": {

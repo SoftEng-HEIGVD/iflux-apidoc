@@ -1,0 +1,36 @@
+// Action with an object for properties
+[
+  {
+    "target": "abcdefeqqsda",
+    "type": "http://iflux.io/schemas/actionTypes/1",
+    "properties": {
+      "temperature" : 22.5,
+      "location" : "room 1"
+    }
+  }
+]
+
+// or with a single string for properties
+[
+  {
+    "target": "abcdefeqqsda",
+    "type": "http://iflux.io/schemas/actionTypes/1",
+    "properties": "single string"
+  }
+]
+
+// or an array for properties (array of any types)
+[
+  {
+    "target": "abcdefeqqsda",
+    "type": "http://iflux.io/schemas/actionTypes/1",
+    "properties": [{
+      "temperature" : 22.5,
+      "location" : "room 1"
+    }, {
+      "temperature" : 22.5,
+      "location" : "room 1"
+    }]
+  }
+]
+

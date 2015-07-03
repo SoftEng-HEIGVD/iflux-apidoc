@@ -6,7 +6,7 @@
       type: string
       example: slack/message
   get:
-    securedBy: [ jwt: { type: 'owner' } ]
+    securedBy: [ jwt: { type: 'owner' }, test ]
     description: Retrieve an action type schema.
     responses:
       200:
@@ -24,7 +24,7 @@
       type: string
       example: temperature/increase
   get:
-    securedBy: [ jwt: { type: 'owner' } ]
+    securedBy: [ jwt: { type: 'owner' }, test ]
     description: Retrieve an event type schema.
     responses:
       200:

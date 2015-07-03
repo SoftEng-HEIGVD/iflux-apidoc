@@ -7,7 +7,10 @@
       example: !include ../examples/auth/request-signin-post.json
     responses:
       200:
-        description: Authentication done correctly.
+        description: |
+          Authentication done correctly.
+
+          **Remark**: The token returned is valid for 24 hours.
         body:
           schema: auth-signin-post-res
           example: !include ../examples/auth/response-signin-post.json
