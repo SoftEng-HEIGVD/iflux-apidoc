@@ -76,6 +76,10 @@ schemas:
   - user-patch: !include doc/schemas/users/request-patch.json
   - user-post: !include doc/schemas/users/request-post.json
   - user-getAll: !include doc/schemas/users/response-array-get.json
+  - event: !include doc/schemas/events/post-event.json
+  - remote-actionTarget-action: !include doc/schemas/remote/post-action.json
+  - remote-actionTarget-configure: !include doc/schemas/remote/post-actionTarget-configure.json
+  - remote-eventSource-configure: !include doc/schemas/remote/post-eventSource-configure.json
 
 traits:
   - auth: !include doc/traits/authentication.raml

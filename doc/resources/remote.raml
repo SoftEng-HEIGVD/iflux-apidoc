@@ -8,6 +8,7 @@ description: The remote API is not implemented on iFLUX itself.
         This resource **MUST** be implemented by the action target. They have to comply to the following spec.
       body:
         application/json:
+          schema: remote-actionTarget-action
           example: !include ../examples/remote/post-actions.json
       responses:
         204:
@@ -23,6 +24,7 @@ description: The remote API is not implemented on iFLUX itself.
         the credentials are required.
       body:
         application/json:
+          schema: remote-actionTarget-configure
           example: !include ../examples/remote/post-actionTarget-configure.json
       responses:
         204:
@@ -40,6 +42,7 @@ description: The remote API is not implemented on iFLUX itself.
         with an identifier configured.
       body:
         application/json:
+          schema: remote-eventSource-configure
           example: !include ../examples/remote/post-eventSource-configure.json
       responses:
         204:

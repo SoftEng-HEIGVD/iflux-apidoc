@@ -1,5 +1,10 @@
 [
   {
-    "name": "iFlux"
+    "target": "<generatedIdentifier>",
+    "type": "http://iflux.io/schemas/actionTypes/slackMessageSending",
+    "properties": {
+      "channel": "General",
+      "message": "There is an issue with a street light at Midnight Road"
+    }
   }
 ]

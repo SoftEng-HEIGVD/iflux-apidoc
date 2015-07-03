@@ -4,6 +4,7 @@ post:
   description: Notify a list of events that have been captured by an event source. The events are processed asynchronously by the iFLUX service.
   body:
     application/json:
+      schema: event
       example: !include ../examples/events/request-post.json
   responses:
     202:
