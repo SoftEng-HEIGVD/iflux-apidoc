@@ -1,0 +1,11 @@
+is: [ auth ]
+get:
+  description: Check the health of the server. Light at the moment.
+  responses:
+    200:
+      description: The server is up and running.
+      body:
+        example: |
+          {
+            "version": "1.0.0"
+          }
