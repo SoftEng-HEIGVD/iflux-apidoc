@@ -93,11 +93,11 @@
                     "type": "object"
                   },
                   "eventSourceTemplateId": {
-                    "description": "The event source template to inject to the transformation validation.",
+                    "description": "If the transformation use data from event source template, you **must** provide the event source template id there. If not given, the validation will not use it. This will most probably result in an expression evaluation error.",
                     "type": "integer"
                   },
                   "eventTypeId": {
-                    "description": "The event type to inject to the transformation validation.",
+                    "description": "If the transformation use data from the event type, you **must** provide an event type there. If not given, the validation will **not** use the event type id, if present, configured in the transformation.",
                     "type": "integer"
                   }
                 },
