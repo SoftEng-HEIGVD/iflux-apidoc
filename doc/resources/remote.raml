@@ -1,5 +1,20 @@
-description: The remote API is not implemented on iFLUX itself.
+description: |
+  The remote API is not implemented on iFLUX itself.
 
+  You are completely free to implement these APIs on any path you want.
+
+  **Examples**:
+  ```
+  http://myremote.eventSource/configure
+  http://myremote.eventSource/api/configure
+  ...
+
+  http://myremote.actionTarget/configure
+  http://myremote.actionTarget/actions
+  http://myremote.actionTarget/api/configure
+  http://myremote.actionTarget/api/actions
+  ...
+  ```
 /<actionTargetImplem>:
   description: Implementation of an action target must offer at least the /actions API.
   /actions:
