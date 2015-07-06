@@ -34,6 +34,48 @@ get:
       description: If the user is not a member of the organization.
 post:
   securedBy: [ jwt: { type: 'owner' }, test ]
+  description: |
+    Create a new rule.
+
+    The `conditions` and `transformations` can be configured with a `JavaScript` expression which is evaluated in a safe
+    way isolated from the server. This means you do not have access to any node module loaded by the server. At the
+    moment, you can access to an options which contains the following:
+
+    ```
+    {
+      json: JSON
+    }
+    ```
+
+    With this option, you can parse/produce JSON objects.
+
+    The `conditions` functions have the following signature:
+
+    ```
+    function(event, eventSource, eventType, options) {
+      // Evaluation code (your expression comes there)
+    }
+    ```
+
+    Arguments:
+    * `event`: The event received by iFLUX
+    * `eventSource`: If the event contains the event source, then it is retrieved and pass to the function
+    * `eventType`: Same for the event type than the event source.
+
+    The `transformations` function have the following signature:
+
+    ```
+    function(event, actionTarget, actionType, eventSource, eventType, options) {
+      return // Evaluation code (your expression comes there)
+    }
+    ```
+
+    Arguments:
+    * `event`: The event received by iFLUX
+    * `actionTarget`: Always available.
+    * `actionType`: Always available.
+    * `eventSource`: If the event contains the event source, then it is retrieved and pass to the function
+    * `eventType`: Same for the event type than the event source.
   responses:
     403:
       description: If the user is not a member of the organization where the new rule will be defined.
@@ -54,6 +96,11 @@ post:
         description: If the user is not a member of the organization that owns the rule.
   patch:
     securedBy: [ jwt: { type: 'owner' }, test ]
+    description: |
+      Patch the specific rule.
+
+      Refers to the `POST` documentation of the `/rules` to get more detailed information about the expressions for
+      `conditions` and `transformations`.
     responses:
       403:
         description: If the user is not a member of the organization that owns the rule.
