@@ -39,7 +39,7 @@
   }],
   "transformations": [{
     "description": "Transform the event of the specific type for the slack action target with the specific action type.",
-    "eventSourceId": 1,
+    "actionTargetId": 1,
     "eventTypeId": 1,
     "actionTypeId": 1,
     "fn": {
