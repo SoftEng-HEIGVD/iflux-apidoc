@@ -1,3 +1,5 @@
 {
-  "name": "iFlux"
+  "id": 1,
+  "name": "iFlux",
+  "deletable": true
 }

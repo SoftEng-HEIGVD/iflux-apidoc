@@ -34,6 +34,9 @@ post:
   patch:
     securedBy: [ jwt: { type: 'owner' }, test ]
 
+  delete:
+    securedBy: [ jwt: { type: 'owner' }, test ]
+
   /users:
     is: [ auth ]
     get:

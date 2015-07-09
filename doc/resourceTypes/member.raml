@@ -61,3 +61,7 @@ delete?:
       description: |
         Returned when the ID for the resource <<resourcePathName | !singularize>> is not found or
         the user does not have access to it.
+
+        In some cases, it also means that the current <<resourcePathName | !singularize>> is referenced
+        in another model. Then, it is not possible to delete the resource. In this case, you should first
+        delete the models that reference this <<resourcePathName | !singularize>>.
