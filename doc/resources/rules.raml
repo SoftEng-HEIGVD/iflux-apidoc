@@ -118,6 +118,11 @@ post:
 
       Refers to the `POST` documentation of the `/rules` to get more detailed information about the expressions for
       `conditions` and `transformations`.
+
+      ### Remark:
+
+      Updating `conditions` or `transformations` will completely overwrite the current `tranformations` or
+      `conditions`. In other words, to update these data, you should provide a **complete** replacement.
     responses:
       403:
         description: If the user is not a member of the organization that owns the rule.
