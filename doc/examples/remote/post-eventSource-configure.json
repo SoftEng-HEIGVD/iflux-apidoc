@@ -1,8 +1,6 @@
-[
-  {
-    "source": "<generatedIdentifier>",
-    "properties": {
-      "sensorId": "A4124EF90673"
-    }
+{
+  "source": "<generatedIdentifier>",
+  "properties": {
+    "sensorId": "A4124EF90673"
   }
-]
+}

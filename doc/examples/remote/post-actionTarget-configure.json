@@ -1,8 +1,6 @@
-[
-  {
-    "target": "<generatedIdentifier>",
-    "properties": {
-      "token": "912isa95qafh92ifadkca9atgjhiuau42irewi"
-    }
+{
+  "target": "<generatedIdentifier>",
+  "properties": {
+    "token": "912isa95qafh92ifadkca9atgjhiuau42irewi"
   }
-]
+}
