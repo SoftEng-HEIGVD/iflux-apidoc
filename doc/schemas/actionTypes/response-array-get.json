@@ -31,11 +31,15 @@
         "description": "Link to the organization",
         "type": "integer"
       },
+      "deletable": {
+        "type": "boolean",
+        "description": "Define if the action type can be deleted."
+      },
       "schema": {
         "description": "A valid JSON Schema.",
         "type": "json"
       }
     },
-    "required": [ "id", "name", "public", "type", "organizationId", "schema" ]
+    "required": [ "id", "name", "public", "type", "organizationId", "deletable", "schema" ]
   }
 }

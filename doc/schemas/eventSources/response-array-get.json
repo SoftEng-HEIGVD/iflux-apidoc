@@ -26,11 +26,15 @@
         "description": "The event source template instantiated.",
         "type": "integer"
       },
+      "deletable": {
+        "type": "boolean",
+        "description": "Define if the event source can be deleted."
+      },
       "configuration": {
         "description": "A valid JSON object.",
         "type": "json"
       }
     },
-    "required": [ "id", "eventSourceId", "name", "organizationId", "eventSourceTemplateId", "configuration" ]
+    "required": [ "id", "eventSourceId", "name", "organizationId", "eventSourceTemplateId", "deletable", "configuration" ]
   }
 }

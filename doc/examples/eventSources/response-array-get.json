@@ -5,6 +5,7 @@
     "name": "my Temperature",
     "organizationId": 2,
     "eventSourceTemplateId": 1,
+    "deletable": true,
     "configuration": {
       "sensorId": "abcdef"
     }

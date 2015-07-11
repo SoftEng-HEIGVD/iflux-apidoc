@@ -6,6 +6,7 @@
     "public": true,
     "type": "http://iflux.io/schemas/actionTypes/slackMessageSending",
     "organizationId": 1,
+    "deletable": true,
     "schema": {
       "$schema": "http://json-schema.org/draft-04/schema#",
       "type": "object",
