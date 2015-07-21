@@ -120,6 +120,8 @@ post:
             {
               "message": "Unable to configure the remote event source."
             }
+  delete:
+    securedBy: [ jwt: { type: 'owner' }, test ]
 
   /configure:
     is: [ auth ]

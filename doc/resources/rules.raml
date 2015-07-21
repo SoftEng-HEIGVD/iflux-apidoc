@@ -129,6 +129,3 @@ post:
 
   delete:
     securedBy: [ jwt: { type: 'owner' }, test ]
-    responses:
-      403:
-        description: If the user is not a member of the organization that owns the rule.

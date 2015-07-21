@@ -83,3 +83,5 @@ post:
           x-iflux-generated-id:
       403:
         description: If the user is not a member of the organization that owns the event source template.
+  delete:
+    securedBy: [ jwt: { type: 'owner' }, test ]
