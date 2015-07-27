@@ -1,0 +1,20 @@
+{
+  "matchedCondtions": [{
+    "matchedBy": {
+      "conditionIndex": 0,
+      "source": true,
+      "type": false,
+      "function": true
+    }
+  }],
+  "matchedActions": [{
+    "matchingBy": {
+      "transformationIndex": 0,
+      "targetAndType": true,
+      "eventType": false
+    },
+    "actionBody": {
+      "newTemperature": 12
+    }
+  }]
+}

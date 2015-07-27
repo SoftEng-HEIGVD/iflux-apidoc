@@ -129,3 +129,22 @@ post:
 
   delete:
     securedBy: [ jwt: { type: 'owner' }, test ]
+
+  /validate:
+    is: [ auth ]
+    post:
+      securedBy: [ jwt: { type: 'owner' }, test ]
+      description: |
+        Let the possibility to validate a registered rule. The rule can always be validated through this API even if
+        the `active` flag is set to `false`.
+      body:
+        schema: event
+        example: !include ../examples/rules/request-validation-post.json
+      responses:
+        200:
+          description: The event was matched by the rule to test
+          body:
+            schema: ruleValidation-post
+            example: !include ../examples/rules/response-validation-post.json
+        422:
+          description: Returned when the rule cannot match the event sent
