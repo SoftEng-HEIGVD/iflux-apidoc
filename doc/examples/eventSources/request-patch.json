@@ -1,3 +1,4 @@
 {
-  "name": "my Temperature"
+  "name": "my Temperature",
+  "public": false
 }

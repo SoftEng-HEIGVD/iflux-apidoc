@@ -2,8 +2,9 @@
   "id": 1,
   "generatedIdentifier": "jusw45mtdj2n",
   "name": "my Temperature",
-  "organizationId": 2,
   "eventSourceTemplateId": 1,
+  "organizationId": 2,
+  "public": true,
   "deletable": true,
   "configuration": {
     "sensorId": "abcdef"

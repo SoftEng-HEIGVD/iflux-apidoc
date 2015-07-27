@@ -26,6 +26,10 @@
         "description": "The action target template instantiated.",
         "type": "integer"
       },
+      "public": {
+        "description": "Make the action target available to everybody.",
+        "type": "boolean"
+      },
       "deletable": {
         "type": "boolean",
         "description": "Define if the action target can be deleted."

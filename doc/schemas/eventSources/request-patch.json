@@ -7,6 +7,10 @@
       "description": "A name to identify the event source.",
       "type": "string"
     },
+    "public": {
+      "description": "Make the event source available to everybody.",
+      "type": "boolean"
+    },
     "configuration": {
       "description": "A valid JSON Schema.",
       "type": "json"

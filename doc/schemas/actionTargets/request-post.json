@@ -15,6 +15,10 @@
       "description": "The organization.",
       "type": "integer"
     },
+    "public": {
+      "description": "Make the action target available to everybody.",
+      "type": "boolean"
+    },
     "description": {
       "description": "A human description of the action target.",
       "type": "string"

@@ -1,3 +1,4 @@
 {
-  "name": "my Slack Channel"
+  "name": "my Slack Channel",
+  "public": false
 }

@@ -15,6 +15,10 @@
       "description": "The event source template to instantiate.",
       "type": "integer"
     },
+    "public": {
+      "description": "Make the event source available to everybody.",
+      "type": "boolean"
+    },
     "description": {
       "description": "A human description of the event source.",
       "type": "string"

@@ -1,6 +1,7 @@
 {
   "name": "my Temperature",
   "organizationId": 2,
+  "public": true,
   "eventSourceTemplateId": 1,
   "configuration": {
     "sensorId": "abcdef"

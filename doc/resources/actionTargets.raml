@@ -9,13 +9,25 @@ type:
 get:
   securedBy: [ jwt: { type: 'owner' }, test ]
   description: |
-    You can retrieve the action targets through:
-      * Action target template given through `actionTargetTemplateId`
-      * Organization given through `organizationId`
-      * All organizations throuhg `allOrganizations`
+    By default, retrieve all the action targets that a user can visualize.
 
-    At least one of these parementers **MUST** be given. In case, multiple parameters are provided, only one will be
-    applied and in this order: `actionTargetTemplateId`, `organizationId` and `allOrganizations`.
+    - If an `actionTargetTemplateId` is provided, then all the action target templates of this action target template are
+    retrieved. The user must have the right to access to this action target template, otherwise, he will get a `403`.
+
+    - If an `organizationId` is provided, then all the action targets of the organization are
+    retrieved. The user must be a member of the organization, otherwise, he will get a `403`.
+
+    - If `allOrganizations` is used, therfore, all the action targets for all the organizations where the user
+    is member are retrived.
+
+    - If `public` is provided then all the action targets that are public are retrieved.
+
+    In the case that multiple parameters are provided, only one will take effect. The evaluation order is the following:
+    1. `actionTargetTemplateId`: All action targets that are defined for this action target template;
+    2. `organizationId`: All action targets where the user is memober of the specified organization;
+    3. `allOrganizations`: All action targets where the user is member of the linked organizations;
+    4. `public`: All public action targets;
+    5. `no param`: All accessible action targets.
   queryParameters:
     actionTargetTemplateId:
       description: |
@@ -41,6 +53,12 @@ get:
       required: false
       example: |
         `allOrganizations` or `allOrganizations=true`
+    public:
+      description: Filter the action targets to retrieve all the public ones.
+      type: boolean
+      required: false
+      example: |
+        `public` or `public=true`
     name:
       type: string
       required: false

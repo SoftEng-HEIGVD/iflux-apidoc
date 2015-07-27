@@ -4,6 +4,7 @@
   "name": "my Slack Channel",
   "actionTargetTemplateId": 1,
   "organizationId": 2,
+  "public": true,
   "deletable": true,
   "configuration": {
     "botId": "jgajdsjgiqd"
