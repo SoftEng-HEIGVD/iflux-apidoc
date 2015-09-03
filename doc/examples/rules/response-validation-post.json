@@ -10,8 +10,7 @@
   "matchedActions": [{
     "matchingBy": {
       "transformationIndex": 0,
-      "targetAndType": true,
-      "eventType": false
+      "targetAndType": true
     },
     "actionBody": {
       "newTemperature": 12

@@ -54,15 +54,11 @@
                 "type": "number"
               },
               "targetAndType": {
-                "description": "If true, the action target and action type were used to match the event.",
-                "type": "boolean"
-              },
-              "type": {
-                "description": "If true, the event type was used to match the event.",
+                "description": "If true, the action target and action type are used to produce the action for the event.",
                 "type": "boolean"
               }
             },
-            "required": [ "transformationIndex", "targetAndType", "type" ]
+            "required": [ "transformationIndex", "targetAndType" ]
           },
           "actionBody": {
             "description": "The event after the transformation was applied. If no transformation function present, the event is returned as it is.",

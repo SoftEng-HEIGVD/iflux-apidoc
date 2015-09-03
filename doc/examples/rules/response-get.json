@@ -59,10 +59,6 @@
       "id": 1,
       "type": "http://iflux.io/v1/schemas/actionTypes/1"
     },
-    "eventType": {
-      "id": 1,
-      "type": "http://iflux.io/v1/schemas/eventTypes/1"
-    },
     "fn": {
       "expression": "return { message: 'The temp. changed from ' + event.temperature.old + ' to ' + event.temperature.new + '.' };",
       "sample": {
